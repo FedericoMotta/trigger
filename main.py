@@ -1,4 +1,5 @@
 import config
+import requests
 from oauth import oauth_flow
 from accounts import select_instagram_account, extract_username_from_url
 from insights import get_post_insights, get_account_insights
@@ -43,7 +44,18 @@ def main_menu():
                     export_format = input("Export as CSV or JSON? (csv/json): ").strip().lower()
                     if export_format not in ("csv", "json"):
                         export_format = "csv"
-                    get_post_insights(config.ACCESS_TOKEN, config.IG_ID, filename="instagram_insights.csv", n=n, export_format=export_format)
+                    # fetch IG account username for nicer output filename
+                    try:
+                        resp = requests.get(
+                            f"https://graph.facebook.com/v19.0/{config.IG_ID}",
+                            params={"fields": "username", "access_token": config.ACCESS_TOKEN},
+                            timeout=20,
+                        )
+                        username = resp.json().get("username")
+                    except Exception:
+                        username = None
+                    # pass username (IG username) so get_post_insights can use it for filenames
+                    get_post_insights(config.ACCESS_TOKEN, config.IG_ID, filename="instagram_insights.csv", n=n, export_format=export_format, username=username)
                 except Exception as e:
                     print(f"Invalid input: {e}")
 
@@ -98,4 +110,3 @@ def main_menu():
 
 if __name__ == "__main__":
     main_menu()
- 
