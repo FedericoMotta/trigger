@@ -23,10 +23,13 @@ def oauth_flow() -> str:
         "pages_show_list",
         "pages_read_engagement",
         "pages_manage_metadata",
+        "instagram_manage_messages",
+        "pages_messaging",
+         "instagram_manage_messages",
     ]
 
     auth_url = (
-        "https://www.facebook.com/v19.0/dialog/oauth?"
+        "https://www.facebook.com/v24.0/dialog/oauth?"
         f"client_id={APP_ID}"
         f"&redirect_uri={urllib.parse.quote(REDIRECT_URI, safe='')}"
         f"&scope={','.join(scopes)}"

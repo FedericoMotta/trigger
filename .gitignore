@@ -3,3 +3,6 @@ main.py
 instagram_insights.json
 media
 insights
+outlier_media
+*.json
+*.txt

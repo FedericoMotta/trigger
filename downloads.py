@@ -181,76 +181,82 @@ def download_media_from_profile_business_discovery(user_token: str, ig_id: str, 
         return
 
     os.makedirs(folder, exist_ok=True)
-    for idx, media in enumerate(media_list[:n], start=1):
-        media_id = media.get("id")
-        media_type = (media.get("media_type") or "").upper()
+    print(media_list)
+    download_media_from_list(media_list, n, folder)
 
-        if media_type == "CAROUSEL_ALBUM":
-            children = media.get("children", {}).get("data", []) or _fetch_children(media_id, user_token)
-            if not children:
-                print(f"[{idx}/{min(n,len(media_list))}] No children found for carousel {media_id}, skipping.")
-                continue
+def download_media_from_list(media_list, n, folder, user_token):
+        if not os.path.exists(folder):
+            os.makedirs(folder, exist_ok=True)
+        for idx, media in enumerate(media_list[:n], start=1):
+            media_id = media.get("id")
+            media_type = (media.get("media_type") or "").upper()
 
-            for c_idx, child in enumerate(children, start=1):
-                child_id = child.get("id")
-                media_url = child.get("media_url")
-                child_type = (child.get("media_type") or "").upper()
-                if not media_url:
-                    try:
-                        mresp = requests.get(
-                            f"https://graph.facebook.com/v19.0/{child_id}",
-                            params={"fields": "media_type,media_url,thumbnail_url", "access_token": user_token},
-                            timeout=30
-                        ).json()
-                        media_url = mresp.get("media_url") or mresp.get("thumbnail_url")
-                        child_type = (mresp.get("media_type") or child_type).upper()
-                    except Exception:
-                        media_url = None
-
-                if not media_url:
-                    print(f"[{idx}/{min(n,len(media_list))}][{c_idx}/{len(children)}] Skipping child {child_id}: no media_url")
+            if media_type == "CAROUSEL_ALBUM":
+                children = media.get("children", {}).get("data", []) or _fetch_children(media_id, user_token)
+                if not children:
+                    print(f"[{idx}/{min(n,len(media_list))}] No children found for carousel {media_id}, skipping.")
                     continue
 
-                ext = "mp4" if child_type in ("VIDEO", "REEL") else "jpg"
-                filename = f"{media_id}_{child_id}.{ext}"
-                filepath = os.path.join(folder, filename)
+                for c_idx, child in enumerate(children, start=1):
+                    child_id = child.get("id")
+                    media_url = child.get("media_url")
+                    child_type = (child.get("media_type") or "").upper()
+                    if not media_url:
+                        try:
+                            mresp = requests.get(
+                                f"https://graph.facebook.com/v19.0/{child_id}",
+                                params={"fields": "media_type,media_url,thumbnail_url", "access_token": user_token},
+                                timeout=30
+                            ).json()
+                            media_url = mresp.get("media_url") or mresp.get("thumbnail_url")
+                            child_type = (mresp.get("media_type") or child_type).upper()
+                        except Exception:
+                            media_url = None
+
+                    if not media_url:
+                        print(f"[{idx}/{min(n,len(media_list))}][{c_idx}/{len(children)}] Skipping child {child_id}: no media_url")
+                        continue
+
+                    ext = "mp4" if child_type in ("VIDEO", "REEL") else "jpg"
+                    filename = f"{media_id}_{child_id}.{ext}"
+                    filepath = os.path.join(folder, filename)
+                    try:
+                        with requests.get(media_url, stream=True, timeout=60) as r:
+                            r.raise_for_status()
+                            import shutil
+                            with open(filepath, "wb") as f:
+                                shutil.copyfileobj(r.raw, f)
+                        print(f"[{idx}/{min(n,len(media_list))}][{c_idx}/{len(children)}] Saved {filename}")
+                    except Exception as e:
+                        print(f"[{idx}/{min(n,len(media_list))}][{c_idx}/{len(children)}] Failed to download {media_url}: {e}")
+                continue
+
+            media_url = media.get("media_url")
+            if not media_url:
                 try:
-                    with requests.get(media_url, stream=True, timeout=60) as r:
-                        r.raise_for_status()
-                        import shutil
-                        with open(filepath, "wb") as f:
-                            shutil.copyfileobj(r.raw, f)
-                    print(f"[{idx}/{min(n,len(media_list))}][{c_idx}/{len(children)}] Saved {filename}")
-                except Exception as e:
-                    print(f"[{idx}/{min(n,len(media_list))}][{c_idx}/{len(children)}] Failed to download {media_url}: {e}")
-            continue
+                    mresp = requests.get(
+                        f"https://graph.facebook.com/v19.0/{media_id}",
+                        params={"fields": "media_url,thumbnail_url,media_type", "access_token": user_token},
+                        timeout=30
+                    ).json()
+                    media_url = mresp.get("media_url") or mresp.get("thumbnail_url")
+                    media_type = (mresp.get("media_type") or media_type).upper()
+                except Exception:
+                    media_url = None
 
-        media_url = media.get("media_url")
-        if not media_url:
+            if not media_url:
+                print(f"[{idx}/{min(n,len(media_list))}] Skipping {media_id}: no media_url")
+                continue
+
+            ext = "mp4" if media_type in ("VIDEO", "REEL") else "jpg"
+            filename = f"{media_id}.{ext}"
+            filepath = os.path.join(folder, filename)
             try:
-                mresp = requests.get(
-                    f"https://graph.facebook.com/v19.0/{media_id}",
-                    params={"fields": "media_url,thumbnail_url,media_type", "access_token": user_token},
-                    timeout=30
-                ).json()
-                media_url = mresp.get("media_url") or mresp.get("thumbnail_url")
-                media_type = (mresp.get("media_type") or media_type).upper()
-            except Exception:
-                media_url = None
-
-        if not media_url:
-            print(f"[{idx}/{min(n,len(media_list))}] Skipping {media_id}: no media_url")
-            continue
-
-        ext = "mp4" if media_type in ("VIDEO", "REEL") else "jpg"
-        filename = f"{media_id}.{ext}"
-        filepath = os.path.join(folder, filename)
-        try:
-            with requests.get(media_url, stream=True, timeout=60) as r:
-                r.raise_for_status()
-                import shutil
-                with open(filepath, "wb") as f:
-                    shutil.copyfileobj(r.raw, f)
-            print(f"[{idx}/{min(n,len(media_list))}] Saved {filename}")
-        except Exception as e:
-            print(f"[{idx}/{min(n,len(media_list))}] Failed to download {media_url}: {e}")
+                with requests.get(media_url, stream=True, timeout=60) as r:
+                    r.raise_for_status()
+                    import shutil
+                    with open(filepath, "wb") as f:
+                        shutil.copyfileobj(r.raw, f)
+                print(f"[{idx}/{min(n,len(media_list))}] Saved {filename}")
+            except Exception as e:
+                print(f"[{idx}/{min(n,len(media_list))}] Failed to download {media_url}: {e}")

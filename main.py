@@ -5,6 +5,8 @@ from accounts import select_instagram_account, extract_username_from_url
 from insights import get_post_insights, get_account_insights
 from downloads import download_last_n_media, download_media_from_profile_business_discovery
 from business_discovery import get_insights_for_profile_business_discovery
+from get_references import get_references
+from copilot import get_outliers
 
 def main_menu():
     global config
@@ -16,6 +18,8 @@ def main_menu():
         print("4. Download your media")
         print("5. Get insights from any Instagram profile")
         print("6. Download media from any Instagram profile")
+        print("7. Get references")
+        print("8. Analyse profile outliers")
         print("0. Exit")
 
         choice = input("Enter 0,1,2,3,4,5,6: ").strip()
@@ -98,6 +102,24 @@ def main_menu():
                     url = input("Enter Instagram profile URL: ").strip()
                     n = int(input("How many recent media do you want to download? "))
                     download_media_from_profile_business_discovery(config.ACCESS_TOKEN, config.IG_ID, url, n=n, folder="media")
+                except Exception as e:
+                    print(f"Invalid input: {e}")
+        elif choice == "7":
+            if not config.ACCESS_TOKEN or not config.IG_ID:
+                print("You need to get a token and select an account first.")
+            else:
+                try:
+                    username = str(input("username to get references for: "))
+                    get_references(config.ACCESS_TOKEN, config.IG_ID, username)
+                except Exception as e:
+                    print(f"Invalid input: {e}")
+        elif choice == "8":
+            if not config.ACCESS_TOKEN or not config.IG_ID:
+                print("You need to get a token and select an account first.")
+            else:
+                try:
+                    username = str(input("username to get references for: "))
+                    get_outliers(config.ACCESS_TOKEN, config.IG_ID, username)
                 except Exception as e:
                     print(f"Invalid input: {e}")
 

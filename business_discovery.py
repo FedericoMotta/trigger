@@ -1,41 +1,79 @@
 import requests
 
+import requests
+from time import sleep
+
 def get_ig_id_from_username_business_discovery(
-    username: str, ig_id: str, user_token: str, n: int = 10, version: str = "v24.0"
+    username: str,
+    ig_id: str,
+    user_token: str,
+    n: int = 100,
+    version: str = "v24.0",
 ):
-    # --- Request both parent media and any nested children inline ---
-    fields = (
-        f"business_discovery.username({username})"
-        + "{id,username,followers_count,media_count,"
-        + f"media.limit({n}){{"
-        + "id,caption,media_type,media_url,thumbnail_url,permalink,timestamp,"
-        + "like_count,comments_count,view_count,"
-        + "children{id,media_type,media_url,thumbnail_url,permalink}"
-        + "}}"
-    )
+    """
+    Fetch up to `n` media for a given username via Business Discovery.
+    Handles pagination (50 media max per request).
+    Returns: (target_ig_id, media_list)
+    """
 
-    url = f"https://graph.facebook.com/{version}/{ig_id}"
-    params = {"fields": fields, "access_token": user_token}
+    base_url = f"https://graph.facebook.com/{version}/{ig_id}"
+    all_media = []
+    after = None
+    target_ig_id = None
 
-    try:
-        resp = requests.get(url, params=params, timeout=30)
-        data = resp.json()
-    except Exception as e:
-        print(f"Failed to call or parse response from Graph API: {e}")
-        return None, []
+    while len(all_media) < n:
+        limit = min(50, n - len(all_media))
 
-    if "error" in data:
-        err = data["error"]
-        print(f"API Error {err.get('code')} ({err.get('type')}): {err.get('message')}")
-        return None, []
+        # Build fields with optional pagination cursor
+        media_pagination = f"media.limit({limit})" + (f".after({after})" if after else "")
+        fields = (
+            f"business_discovery.username({username})" + "{"
+            "id,username,followers_count,media_count,"
+            f"{media_pagination}{{"
+            "id,caption,media_type,media_url,thumbnail_url,permalink,timestamp,"
+            "like_count,comments_count,view_count,"
+            "children{id,media_type,media_url,thumbnail_url,permalink}"
+            "}}"
+        )
 
-    bd = data.get("business_discovery")
-    if not bd:
-        print("No business_discovery object found — likely missing permissions.")
-        return None, []
+        params = {"fields": fields, "access_token": user_token}
 
-    target_ig_id = bd.get("id")
-    media_list = bd.get("media", {}).get("data", [])
+        try:
+            resp = requests.get(base_url, params=params, timeout=30)
+            data = resp.json()
+        except Exception as e:
+            print(f"Failed to call or parse response from Graph API: {e}")
+            break
+
+        if "error" in data:
+            err = data["error"]
+            print(f"API Error {err.get('code')} ({err.get('type')}): {err.get('message')}")
+            break
+
+        bd = data.get("business_discovery")
+        if not bd:
+            print("No business_discovery object found — likely missing permissions.")
+            break
+
+        # Extract IG ID and media list
+        target_ig_id = bd.get("id", target_ig_id)
+        media_data = bd.get("media", {}).get("data", [])
+        if not media_data:
+            break
+
+        all_media.extend(media_data)
+
+        # Pagination
+        paging = bd.get("media", {}).get("paging", {})
+        after = paging.get("cursors", {}).get("after")
+        if not after:
+            break
+
+        sleep(0.3)  # small delay to respect rate limits
+
+    # Trim in case we got more than requested
+    media_list = all_media[:n]
+    print(f"Fetched {len(media_list)} media items for @{username}.")
     return target_ig_id, media_list
 
 
@@ -53,7 +91,7 @@ def get_insights_for_profile_business_discovery(
     results = []
     for media in media_list:
         record = {
-            "media_id": media.get("id"),
+            "id": media.get("id"),
             "caption": (media.get("caption") or "").replace("\n", " ")[:200],
             "timestamp": media.get("timestamp"),
             "media_type": media.get("media_type"),
