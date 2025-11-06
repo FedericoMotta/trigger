@@ -95,6 +95,20 @@ def get_post_insights(user_token: str, ig_id: str, filename: str = "instagram_in
                 if values:
                     insight_values[name] = values[-1].get("value")
 
+            # Calculate custom engagement metrics
+            likes = float(insight_values.get("likes", 0))
+            saves = float(insight_values.get("saved", 0))
+            shares = float(insight_values.get("shares", 0))
+            comments = float(insight_values.get("comments", 0))
+            reach = float(insight_values.get("reach", 0))
+
+            # Custom engagement rates
+            custom_rates = {
+                "self_rate": saves / likes if likes > 0 else 0.0,
+                "social_rate": comments / likes if likes > 0 else 0.0,
+                "relatability_rate": (likes + shares) / reach if reach > 0 else 0.0
+            }
+
             record = {
                 "media_id": media_id,
                 "caption": (caption or "").replace("\n", " ")[:200],
@@ -102,7 +116,8 @@ def get_post_insights(user_token: str, ig_id: str, filename: str = "instagram_in
                 "media_type": mtype,
                 "media_url": media_url,
                 "permalink": permalink,
-                **insight_values
+                **insight_values,
+                **custom_rates
             }
             results.append(record)
             processed += 1

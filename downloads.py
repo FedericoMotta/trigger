@@ -188,7 +188,7 @@ def download_media_from_list(media_list, n, folder, user_token):
         if not os.path.exists(folder):
             os.makedirs(folder, exist_ok=True)
         for idx, media in enumerate(media_list[:n], start=1):
-            media_id = media.get("id")
+            media_id = media.get("id", media.get("media_id"))
             media_type = (media.get("media_type") or "").upper()
 
             if media_type == "CAROUSEL_ALBUM":

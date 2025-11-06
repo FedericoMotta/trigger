@@ -6,7 +6,9 @@ from insights import get_post_insights, get_account_insights
 from downloads import download_last_n_media, download_media_from_profile_business_discovery
 from business_discovery import get_insights_for_profile_business_discovery
 from get_references import get_references
-from copilot import get_outliers
+from get_outliers import get_outliers
+import traceback
+
 
 def main_menu():
     global config
@@ -119,9 +121,12 @@ def main_menu():
             else:
                 try:
                     username = str(input("username to get references for: "))
-                    get_outliers(config.ACCESS_TOKEN, config.IG_ID, username)
+                    multiplier = float(input("multiplier from average likes: "))
+                    n_media = int(input("number of media to analyse:  "))
+                    get_outliers(config.ACCESS_TOKEN, config.IG_ID, username,n_media, multiplier)
                 except Exception as e:
-                    print(f"Invalid input: {e}")
+                        tb = traceback.extract_tb(e.__traceback__)[-1]  # last traceback frame
+                        print(f"❌ Invalid input on line {tb.lineno}: {e}")
 
         elif choice == "0":
             print("Bye!")
