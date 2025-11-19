@@ -1,0 +1,765 @@
+<style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; margin: 20px; background-color: #f9f9f9; }
+        h1 { color: #000000; font-size: 2em; margin-bottom: 0.5em; }
+        h2 { color: #525252; font-size: 1.6em; margin-top: 1.5em; margin-bottom: 0.8em; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        h3 { color: #a1a1a1; font-size: 1.2em; margin-top: 1.2em; margin-bottom: 0.6em; }
+        p { margin-bottom: 1em; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; color: #333; font-weight: bold; }
+        tr:nth-child(even) { background-color: #fdfdfd; }
+        a { color: #3498db; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { list-style-type: disc; margin-left: 20px; margin-bottom: 1em; }
+        .note { background-color: #fff3cd; border-left: 5px solid #ffeeba; padding: 10px 15px; margin-bottom: 1em; color: #5e2a2a; }
+    </style>
+    
+    <div style="position: absolute; top: 20px; right: 20px;">
+        <svg width="80" height="22" viewBox="0 0 80 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.87768 1.11867H7.94307V16.7812H4.87768V1.11867ZM-9.32645e-05 1.11867H12.8208V3.78131H-9.32645e-05V1.11867ZM12.3964 4.25119H15.3947V16.7812H12.3964V4.25119ZM15.3947 10.5386L15.059 8.34583C15.059 7.958 15.0963 7.51049 15.1709 7.00332C15.2604 6.49616 15.4469 6.01136 15.7303 5.54894C16.0137 5.07161 16.4463 4.67631 17.028 4.36306C17.6098 4.04981 18.4004 3.89318 19.3998 3.89318V6.8467C18.5197 6.8467 17.7813 6.95112 17.1847 7.15995C16.588 7.36879 16.1405 7.73425 15.8422 8.25633C15.5438 8.77842 15.3947 9.53917 15.3947 10.5386ZM20.4346 4.25119H23.4329V16.7812H20.4346V4.25119ZM20.3227 -8.71643e-05H23.5671V3.26668H20.3227V-8.71643e-05ZM30.1817 16.6917C29.0033 16.6917 27.989 16.4307 27.1387 15.9086C26.3034 15.3865 25.662 14.6482 25.2145 13.6935C24.767 12.7239 24.5432 11.5977 24.5432 10.3148C24.5432 9.01709 24.767 7.89087 25.2145 6.9362C25.662 5.96661 26.3034 5.22077 27.1387 4.69869C27.989 4.16168 29.0033 3.89318 30.1817 3.89318C31.6287 3.89318 32.7176 4.30339 33.4485 5.12381C34.1943 5.92932 34.6941 7.10028 34.9476 8.63671L34.9029 12.0377C34.7537 12.9775 34.5076 13.7979 34.1645 14.499C33.8214 15.2001 33.3292 15.7445 32.6878 16.1324C32.0463 16.5053 31.211 16.6917 30.1817 16.6917ZM31.1439 21.6143C29.8163 21.6143 28.7348 21.4054 27.8995 20.9878C27.0791 20.5701 26.4526 20.0256 26.02 19.3544C25.5874 18.6981 25.3114 18.0193 25.1921 17.3183H28.2799C28.4439 17.9298 28.7796 18.3475 29.2867 18.5713C29.8088 18.795 30.4279 18.9069 31.1439 18.9069C31.6361 18.9069 32.0836 18.8174 32.4864 18.6384C32.904 18.4594 33.2397 18.1685 33.4933 17.7658C33.7468 17.363 33.8736 16.8111 33.8736 16.11H36.8719C36.8719 17.2884 36.6183 18.2878 36.1111 19.1083C35.604 19.9287 34.9178 20.5477 34.0526 20.9654C33.2024 21.398 32.2328 21.6143 31.1439 21.6143ZM30.674 13.9844C31.7629 13.9844 32.5684 13.6487 33.0905 12.9775C33.6126 12.3062 33.8736 11.4187 33.8736 10.3148C33.8736 9.19609 33.6126 8.30108 33.0905 7.62983C32.5684 6.94366 31.7629 6.60057 30.674 6.60057C29.6746 6.60057 28.9138 6.9362 28.3917 7.60745C27.8696 8.27871 27.6086 9.18117 27.6086 10.3148C27.6086 11.4336 27.8696 12.3286 28.3917 12.9999C28.9138 13.6562 29.6746 13.9844 30.674 13.9844ZM33.8736 16.11V4.25119H36.8719V16.11H33.8736ZM43.679 16.6917C42.5005 16.6917 41.4862 16.4307 40.636 15.9086C39.8006 15.3865 39.1592 14.6482 38.7117 13.6935C38.2642 12.7239 38.0404 11.5977 38.0404 10.3148C38.0404 9.01709 38.2642 7.89087 38.7117 6.9362C39.1592 5.96661 39.8006 5.22077 40.636 4.69869C41.4862 4.16168 42.5005 3.89318 43.679 3.89318C45.1259 3.89318 46.2148 4.30339 46.9457 5.12381C47.6916 5.92932 48.1913 7.10028 48.4449 8.63671L48.4001 12.0377C48.251 12.9775 48.0048 13.7979 47.6617 14.499C47.3187 15.2001 46.8264 15.7445 46.185 16.1324C45.5436 16.5053 44.7082 16.6917 43.679 16.6917ZM44.6411 21.6143C43.3135 21.6143 42.232 21.4054 41.3967 20.9878C40.5763 20.5701 39.9498 20.0256 39.5172 19.3544C39.0846 18.6981 38.8087 18.0193 38.6893 17.3183H41.7771C41.9412 17.9298 42.2768 18.3475 42.784 18.5713C43.3061 18.795 43.9251 18.9069 44.6411 18.9069C45.1334 18.9069 45.5809 18.8174 45.9836 18.6384C46.4013 18.4594 46.7369 18.1685 46.9905 17.7658C47.2441 17.363 47.3709 16.8111 47.3709 16.11H50.3691C50.3691 17.2884 50.1155 18.2878 49.6084 19.1083C49.1012 19.9287 48.415 20.5477 47.5499 20.9654C46.6996 21.398 45.73 21.6143 44.6411 21.6143ZM44.1712 13.9844C45.2601 13.9844 46.0656 13.6487 46.5877 12.9775C47.1098 12.3062 47.3709 11.4187 47.3709 10.3148C47.3709 9.19609 47.1098 8.30108 46.5877 7.62983C46.0656 6.94366 45.2601 6.60057 44.1712 6.60057C43.1718 6.60057 42.411 6.9362 41.889 7.60745C41.3669 8.27871 41.1058 9.18117 41.1058 10.3148C41.1058 11.4336 41.3669 12.3286 41.889 12.9999C42.411 13.6562 43.1718 13.9844 44.1712 13.9844ZM47.3709 16.11V4.25119H50.3691V16.11H47.3709ZM57.784 17.1393C56.4862 17.1393 55.36 16.8633 54.4054 16.3114C53.4507 15.7445 52.7048 14.9614 52.1678 13.962C51.6458 12.9626 51.3847 11.8214 51.3847 10.5386C51.3847 9.24084 51.6458 8.09225 52.1678 7.09282C52.7048 6.0934 53.4507 5.31027 54.4054 4.74344C55.36 4.1766 56.4862 3.89318 57.784 3.89318C58.6343 3.89318 59.4323 4.06473 60.1781 4.40781C60.9389 4.7509 61.5952 5.25061 62.1471 5.90694C62.6991 6.54836 63.1018 7.34641 63.3554 8.30108C63.609 9.24084 63.6537 10.3148 63.4897 11.5231H53.0852V9.06183H61.5206L60.4914 9.68834C60.566 9.19609 60.5063 8.71129 60.3124 8.23396C60.1334 7.75662 59.8351 7.36878 59.4174 7.07045C58.9997 6.7572 58.4553 6.60057 57.784 6.60057C56.9934 6.60057 56.352 6.77212 55.8597 7.1152C55.3675 7.45829 55.0095 7.93562 54.7857 8.54721C54.562 9.14388 54.4501 9.80767 54.4501 10.5386C54.4501 11.2546 54.562 11.9109 54.7857 12.5076C55.0095 13.1043 55.3675 13.5742 55.8597 13.9172C56.352 14.2603 56.9934 14.4319 57.784 14.4319C58.4553 14.4319 59.0072 14.2752 59.4398 13.962C59.8723 13.6487 60.1707 13.2609 60.3348 12.7985H63.512C63.333 13.6637 62.9825 14.4244 62.4604 15.0807C61.9383 15.7222 61.282 16.2293 60.4914 16.6022C59.7008 16.9603 58.7983 17.1393 57.784 17.1393ZM64.6307 4.25119H67.629V16.7812H64.6307V4.25119ZM67.629 10.5386L67.2934 8.34583C67.2934 7.958 67.3307 7.51049 67.4053 7.00332C67.4948 6.49616 67.6812 6.01136 67.9646 5.54894C68.2481 5.07161 68.6806 4.67631 69.2624 4.36306C69.8441 4.04981 70.6347 3.89318 71.6342 3.89318V6.8467C70.7541 6.8467 69.9934 6.95112 69.3967 7.15995C68.8001 7.36879 68.3525 7.73425 68.0542 8.25633C67.7558 8.77842 67.629 9.53917 67.629 10.5386ZM76.7491 7.00332L74.8696 4.02743L75.5632 3.51281L76.2569 2.99818L78.5167 5.70557L76.7491 7.00332ZM74.3773 7.00332L72.6097 5.70557L74.8696 2.99818L75.5632 3.51281L76.2569 4.02743L74.3773 7.00332ZM75.2947 4.34069L71.8937 3.46806L72.5426 1.38717L75.8094 2.68493L75.5632 3.51281L75.2947 4.34069ZM74.713 3.51281L74.4892 -8.71643e-05H76.6596L76.4359 3.51281H75.5632H74.713ZM75.8317 4.34069L75.5632 3.51281L75.3171 2.68493L78.5839 1.38717L79.2327 3.46806L75.8317 4.34069Z" fill="#FEF9EE"/>
+        </svg>
+    </div>
+    
+    <h1>Testbusters In-Depth Analysis</h1>
+    <p>Posts Considered: Last 21</p>
+    <p>Method Used: Behavioural Reward Framework + Conversion Metrics</p>
+
+    <h2>Reward Model Overview:</h2>
+    <ul>
+        <li><strong>Relatability:</strong> Recognition and identity resonance (likes + shares vs reach).</li>
+        <li><strong>Self:</strong> Personal utility and retained value (saves, saves/likes).</li>
+        <li><strong>Social:</strong> Belonging, signaling, and interaction (comments, replies, share-driven discussion).</li>
+    </ul>
+
+    <h2>Narrative & Psychological Insights:</h2>
+    <p>The Testbusters Instagram presence functions as a vital navigational beacon for aspiring university students, particularly those aiming for highly competitive medical programs. The core emotional and psychological narrative driving this account is the *alleviation of anxiety through authoritative information and strategic empowerment*. Students are navigating a landscape fraught with uncertainty—evolving regulations, complex exam structures, and intense competition. The content directly addresses these anxieties by providing timely updates, clear explanations, and practical guidance.</p>
+    <p>This approach psychologically leverages several key drivers. It fosters a profound sense of <strong>Relatability</strong> by acknowledging the shared confusion, frustration, and high stakes inherent in the admission process. The account normalizes these experiences, tacitly communicating, "You are not alone in this challenge." Simultaneously, it consistently offers pathways to <strong>Self-Reward</strong> through educational content: breaking down complex decrees, teaching study strategies, and providing simulation tools. This empowers students, cultivating a sense of competence and control over their future. Lastly, the consistent call for interaction—asking questions, sharing opinions, or commenting for resources—activates <strong>Social Reward</strong>. It creates a community where users feel heard, valued, and connected to peers facing identical hurdles, reinforcing a positive in-group identity essential for sustained engagement.</p>
+
+    <h2>Summary Table: Top 10 Posts (Ranked by Comments Count)</h2>
+    <div class="note">
+        <strong>Note on Ranking:</strong> The provided dataset indicates zero values for 'saves', 'shares', and 'reach' across all Instagram posts. Consequently, the 'Self Rate' and 'Relatability Rate' metrics are uniformly 0.0% for all entries, rendering them non-discriminatory for ranking purposes. To provide a meaningful ranking based on observed user behavior, this table is sorted by 'Comments Count' in descending order, as comments represent a direct and varied signal of Social Reward and active engagement. PDF document entries are excluded from this ranking.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Post URL</th>
+                <th>Main Topic</th>
+                <th>Format</th>
+                <th>Likes</th>
+                <th>Saves</th>
+                <th>Comments</th>
+                <th>Shares</th>
+                <th>Reach</th>
+                <th>Relatability Rate</th>
+                <th>Self Rate</th>
+                <th>Social Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DKr_FmFoNar/" target="_blank">https://www.instagram.com/p/DKr_FmFoNar/</a></td>
+                <td>Competitive Healthcare Professions</td>
+                <td>text_and_icon_carousel</td>
+                <td>847</td>
+                <td>0</td>
+                <td>823</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00%</td>
+                <td>0.00%</td>
+                <td>97.17%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DP4VqudCB9w/" target="_blank">https://www.instagram.com/p/DP4VqudCB9w/</a></td>
+                <td>Test Accessibility for Disabilities</td>
+                <td>text_only_carousel</td>
+                <td>1254</td>
+                <td>0</td>
+                <td>371</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00%</td>
+                <td>0.00%</td>
+                <td>29.59%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLaFL2-oru8/" target="_blank">https://www.instagram.com/p/DLaFL2-oru8/</a></td>
+                <td>ChatGPT Study Mode</td>
+                <td>text_and_icon_carousel</td>
+                <td>817</td>
+                <td>0</td>
+                <td>328</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00%</td>
+                <td>0.00%</td>
+                <td>40.15%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DKMQzCUoNpn/" target="_blank">https://www.instagram.com/p/DKMQzCUoNpn/</a></td>
+                <td>IMAT and Private Universities Exclusion from Reform</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>2961</td>
+                <td>0</td>
+                <td>262</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00%</td>
+                <td>0.00%</td>
+                <td>8.85%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DKfcutlof1i/" target="_blank">https://www.instagram.com/p/DKfcutlof1i/</a></td>
+                <td>Test Structure and Scoring</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>2328</td>
+                <td>0</td>
+                <td>245</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00%</td>
+                <td>0.00%</td>
+                <td>10.52%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJ1Rse3IgRv/" target="_blank">https://www.instagram.com/p/DJ1Rse3IgRv/</a></td>
+                <td>Medical Reform Updates</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>861</td>
+                <td>0</td>
+                <td>231</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00%</td>
+                <td>0.00%</td>
+                <td>26.83%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLRvhdTIDbI/" target="_blank">https://www.instagram.com/p/DLRvhdTIDbI/</a></td>
+                <td>Online Test Simulations</td>
+                <td>VIDEO</td>
+                <td>734</td>
+                <td>0</td>
+                <td>216</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00%</td>
+                <td>0.00%</td>
+                <td>29.43%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DP1H7WPiKTD/" target="_blank">https://www.instagram.com/p/DP1H7WPiKTD/</a></td>
+                <td>Test Scoring Changes</td>
+                <td>text_and_icon_carousel</td>
+                <td>747</td>
+                <td>0</td>
+                <td>193</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00%</td>
+                <td>0.00%</td>
+                <td>25.84%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DMIwb-QIZFh/" target="_blank">https://www.instagram.com/p/DMIwb-QIZFh/</a></td>
+                <td>Medical Decree Announcement</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>973</td>
+                <td>0</td>
+                <td>157</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00%</td>
+                <td>0.00%</td>
+                <td>16.14%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLsh4HioPQl/" target="_blank">https://www.instagram.com/p/DLsh4HioPQl/</a></td>
+                <td>Competitive Healthcare Professions</td>
+                <td>text_and_icon_carousel</td>
+                <td>809</td>
+                <td>0</td>
+                <td>136</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00%</td>
+                <td>0.00%</td>
+                <td>16.81%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>1. Content Pillar Analysis</h2>
+    <h3>Official Updates & Deadlines</h3>
+    <p><strong>Topics included:</strong> Medical Decree Announcement, Test Dates and Cost, Official Test Dates, Delayed Medical Decree, IMAT and Private Universities Exclusion from Reform, Medical Reform Updates, Ranking and Enrollment Deadlines</p>
+    <p><strong>Narrative focus:</strong> Provides urgent, factual information on policy changes, exam dates, and application processes.</p>
+    <p><strong>Psychological why it performs:</strong> Alleviates anxiety by providing clarity and certainty in a fluctuating, high-stakes environment. Taps into students' need for timely, reliable information to plan their future, thereby fulfilling a critical aspect of Self-Reward (empowerment through knowledge) and Relatability (sharing widely impactful news).</p>
+
+    <h3>Test Structure & Strategy</h3>
+    <p><strong>Topics included:</strong> Test Structure and Scoring, Test Structure, Test Strategy for Guessing, New Scoring System and Strategy, Test Scoring Changes, Medical Test Modalities, Mental Math Strategies</p>
+    <p><strong>Narrative focus:</strong> Offers practical advice, explanations of exam formats, and strategic approaches to maximize performance on admission tests.</p>
+    <p><strong>Psychological why it performs:</strong> Empowers students by demystifying complex exam mechanics and offering actionable strategies. This strongly activates Self-Reward, as users perceive the content as directly improving their competence and chances of success. It leverages Social Learning Theory by providing clear, replicable behaviors.</p>
+
+    <h3>University Guides & Comparison</h3>
+    <p><strong>Topics included:</strong> University Rankings, University Comparison (Northern Italy), Medical School Competition, Medical School Enrollment Statistics</p>
+    <p><strong>Narrative focus:</strong> Presents data-driven insights into university performance, admission difficulty, and location-specific details.</p>
+    <p><strong>Psychological why it performs:</strong> Addresses a core concern for prospective students: 'Where should I go, and can I get in?' This content provides a sense of control and informed decision-making (Self-Reward), while also fostering Relatability by acknowledging the universal dilemma of choosing a university.</p>
+
+    <h3>Study Resources & Tools</h3>
+    <p><strong>Topics included:</strong> ChatGPT Study Mode, Online Test Simulations, Official Syllabus Analysis, Competitive Healthcare Professions</p>
+    <p><strong>Narrative focus:</strong> Promotes the account's own preparatory materials and discusses innovative study aids.</p>
+    <p><strong>Psychological why it performs:</strong> Offers direct tools for academic improvement, engaging Self-Reward by facilitating study and preparation. It also leverages Social Reward when content invites comments for receiving resources, building community around shared goals of effective study.</p>
+
+    <h3>Student Experience & Humor</h3>
+    <p><strong>Topics included:</strong> Headache Types and Causes, Pupil Dilation Causes, Medical School in Albania Meme, Online vs. In-Person Learning, Mandatory Attendance Rules</p>
+    <p><strong>Narrative focus:</strong> Explores common physiological responses to stress, offers lighthearted takes on student life, or discusses general challenges faced by students.</p>
+    <p><strong>Psychological why it performs:</strong> Primarily drives Relatability by acknowledging and normalizing shared experiences, struggles, and anxieties. Humor (memes) creates a strong sense of in-group belonging and collective identity, validating feelings of frustration or confusion.</p>
+
+    <h3>Highest Performing Topics & Why:</h3>
+    <ul>
+        <li><strong>Relatability (likes + shares vs reach):</strong> Posts providing urgent news on medical decrees, test dates, and university rankings consistently attract high engagement. While direct 'shares' and 'reach' data are unavailable, the volume of 'likes' and 'comments' on these topics indicates a strong identification with the content. For example, posts on "IMAT and Private Universities Exclusion from Reform" (<a href="https://www.instagram.com/p/DKMQzCUoNpn/" target="_blank">https://www.instagram.com/p/DKMQzCUoNpn/</a>) generate significant likes because they directly address widespread anxieties and validate collective experiences of uncertainty.</li>
+        <li><strong>Self reward (saves, saves/likes):</strong> Topics offering practical strategies for test preparation, such as "Competitive Healthcare Professions" (<a href="https://www.instagram.com/p/DKr_FmFoNar/" target="_blank">https://www.instagram.com/p/DKr_FmFoNar/</a>) and "ChatGPT Study Mode" (<a href="https://www.instagram.com/p/DLaFL2-oru8/" target="_blank">https://www.instagram.com/p/DLaFL2-oru8/</a>), tend to elicit high comment counts. Despite 'saves' data being uniformly zero, the instructional nature of these posts strongly suggests that users perceive them as personally useful for growth and competence, prompting direct engagement in lieu of saves.</li>
+        <li><strong>Social reward (comments, replies, call-to-action effects):</strong> Content that directly invites interaction and community contribution performs exceptionally well. Posts like "Competitive Healthcare Professions" (823 comments) and "Test Accessibility for Disabilities" (371 comments) demonstrate robust social reward. The explicit calls-to-action, such as "Comment with 👻 to receive our free Starter Kit," effectively motivate public participation, making users feel visible and part of a collective effort.</li>
+        <li><strong>Conversion (profile visits -> follows):</strong> The provided dataset reports zero 'profile_visits' and 'follows', making direct analysis of content-driven conversion impossible. However, the consistent integration of calls-to-action that offer valuable resources (e.g., free syllabi, simulations) in exchange for comments serves as a strong indirect indicator of conversion intent and interest in deeper engagement with the brand's offerings.</li>
+    </ul>
+
+    <h2>2. Hook Pattern Analysis</h2>
+    <h3>1. Breaking News / Urgent Update</h3>
+    <ul>
+        <li><strong>Example hook quote:</strong> "Breaking News. è uscito il decreto di med" (<a href="https://www.instagram.com/p/DMIwb-QIZFh/" target="_blank">https://www.instagram.com/p/DMIwb-QIZFh/</a>)</li>
+        <li><strong>Which posts use it:</strong> "Medical Decree Announcement", "IMAT Test Status", "Medical Reform Updates", "Delayed Medical Decree", "Official Test Dates", "Test Scoring Changes", "Medical Test Modalities".</li>
+        <li><strong>Psychological effect and why it works:</strong> This archetype leverages the audience's high anxiety and constant need for critical, timely information regarding their future. It triggers a strong fear of missing out (FOMO) and the fundamental human drive for certainty, providing immediate psychological relief by delivering essential updates directly and authoritatively. This positions the account as an indispensable, reliable source.</li>
+    </ul>
+
+    <h3>2. Direct Question & Problem Framing</h3>
+    <ul>
+        <li><strong>Example hook quote:</strong> "non sai come iscriverti al Semestre Filtro di medicina? vieni vieni che ti faccio vedere." (<a href="https://www.instagram.com/p/DPWB1ZYiN8F/" target="_blank">https://www.instagram.com/p/DPWB1ZYiN8F/</a>)</li>
+        <li><strong>Which posts use it:</strong> "University Enrollment Process", "Competitive Healthcare Professions" (both entries), "Headache Types and Causes", "Pupil Dilation Causes", "Online vs. In-Person Learning".</li>
+        <li><strong>Psychological effect and why it works:</strong> By articulating a common problem or question, this hook establishes immediate relatability and empathy. It validates the user's current struggles, making them feel understood. The implied promise of a solution positions the content as a direct answer to their unarticulated needs, engaging their motivation for Self-Reward through problem-solving.</li>
+    </ul>
+
+    <h3>3. Benefit-Oriented Call to Action</h3>
+    <ul>
+        <li><strong>Example hook quote:</strong> "Commenta con 👻 per ricevere il PDF con tutte le domande e risposte del Ministero sul Semestre Filtro" (<a href="https://www.instagram.com/p/DLsh4HioPQl/" target="_blank">https://www.instagram.com/p/DLsh4HioPQl/</a>)</li>
+        <li><strong>Which posts use it:</strong> Frequently integrated across many posts, especially "Competitive Healthcare Professions", "Test Structure and Scoring", "ChatGPT Study Mode", "Online Test Simulations", "Official Syllabus Analysis".</li>
+        <li><strong>Psychological effect and why it works:</strong> This directly activates the Self-Reward mechanism by clearly stating the tangible utility or resource available. It motivates immediate engagement (commenting) by appealing to the user's desire for personal growth, preparation, and advantage in a competitive context. It functions as a clear transactional offer: engage for value.</li>
+    </ul>
+
+    <h3>4. Myth Busting / Clarification</h3>
+    <ul>
+        <li><strong>Example hook quote:</strong> "IMAT non è incluso nella riforma (almeno per questo anno)" (<a href="https://www.instagram.com/p/DPzF6L3CKlS/" target="_blank">https://www.instagram.com/p/DPzF6L3CKlS/</a>)</li>
+        <li><strong>Which posts use it:</strong> "IMAT Test Status", "New Scoring System and Strategy", "Medical Semester Filter Debate" (implicitly, in its defense against accusations).</li>
+        <li><strong>Psychological effect and why it works:</strong> In an information-rich and often confusing environment, this hook archetype offers definitive answers to widespread uncertainties or addresses common misconceptions. It builds trust by dispelling rumors and providing authoritative clarity, reducing cognitive load and reinforcing the account's credibility as an ultimate source of truth, thereby offering Self-Reward through informed understanding.</li>
+    </ul>
+
+    <h2>3. Format & Tone of Voice Analysis</h2>
+    <p>The content strategy predominantly relies on **Carousel Albums** (text-only and text-and-icon), supplemented by **Talking Head Videos** and occasional **Image Posts (Memes)**. The data provided uniformly reports zero values for 'saves', 'shares', 'reach', 'views', 'avg_watch_time', 'profile_visits', and 'follows'. Therefore, a quantitative comparison of format performance based on these metrics is not possible. The analysis below is based on the inherent psychological design and typical expected performance of these formats, assuming complete data would reflect these trends.</p>
+    <ul>
+        <li><strong>Carousels (Text-only & Text & Icon):</strong> These are the workhorse of the account, used for delivering detailed information, step-by-step guides, rankings, and extensive policy explanations.
+            <ul>
+                <li><strong>Save Density:</strong> Typically, carousels excel at accumulating saves due to their high information density and perceived utility for future reference. For an audience engaged in complex test preparation and policy navigation, these formats serve as easily digestible knowledge repositories, fostering a strong sense of Self-Reward through retained value. The expectation is that users would save these posts for later study or to re-verify critical information, even though the provided data shows 0 saves.</li>
+                <li><strong>Share Triggers:</strong> Carousels often contain valuable information that students would share with study groups or friends facing similar challenges, driving a sense of collective Self-Reward and Social Reward through information exchange.</li>
+            </ul>
+        </li>
+        <li><strong>Videos (Talking Head & Screen Recording):</strong> Employed for urgent news updates, official announcements, and practical tutorials (e.g., enrollment process walkthroughs).
+            <ul>
+                <li><strong>Avg Watch Time & Completion (Reels):</strong> While the provided 'avg_watch_time' is zero, videos, especially Reels, are designed for quick, engaging information delivery. High watch time and completion rates would typically indicate strong audience retention and a deep engagement with the instructional or news-based content, enhancing Self-Reward through direct learning.</li>
+                <li><strong>Share Triggers:</strong> Videos with critical, breaking news or highly relatable emotional content often prompt shares, extending their reach and reinforcing both Relatability and Social Reward. The human element in talking-head videos also builds a stronger parasocial relationship and trust.</li>
+            </ul>
+        </li>
+        <li><strong>Image Posts (Memes):</strong> Used sparingly, primarily for humor and lighthearted commentary on shared student experiences, such as the "Medical School in Albania Meme" (<a href="https://www.instagram.com/p/DKe_YRgoGI-/" target="_blank">https://www.instagram.com/p/DKe_YRgoGI-/</a>).
+            <ul>
+                <li><strong>Share Triggers:</strong> Memes are highly shareable content, designed to activate Relatability by tapping into common frustrations and inside jokes. They foster in-group identity and provide a brief emotional release from stress, making them ideal for viral spread within peer networks.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p><strong>Psychological Effect of the Account's Tone of Voice:</strong> The account's tone is a masterful blend of **authoritative clarity, empathetic understanding, and empowering guidance**. It consistently projects expertise and reliability, which is paramount for an audience seeking accurate information in a high-stakes academic environment. The use of phrases like "Breaking News" and explicit "TB News" banners immediately signals credible, urgent information, fulfilling the need for certainty and reducing cognitive dissonance. Concurrently, the tone remains highly accessible and empathetic, acknowledging student struggles with phrases like "non sai come iscriverti?" or lighthearted humor ("Prof, il Ministero è in ritardo ☝️🤓"). This dual approach fosters both trust and relatability. It positions Testbusters not just as an expert, but as a supportive ally that understands and validates the student experience, encouraging active participation and loyalty within its community.</p>
+
+    <h2>4. Behavioral Reward Mapping (Full Dataset Table)</h2>
+    <div class="note">
+        <strong>Note on Metrics:</strong> Due to consistent zero values for 'saves', 'shares', and 'reach' in the provided dataset, the 'Self Rate' and 'Relatability Rate' columns are uniformly 0.0%. Similarly, 'Views' and 'Avg Watch Time' are 0 for all video posts. The 'Dominant Reward' and 'Why It Works (psychological rationale)' are primarily inferred from the content's topic, hook, and caption, along with the observed 'likes' and 'comments' activity where available. PDF document entries are indicated as "N/A (PDF Document)" for the URL and have zero metrics.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Post URL</th>
+                <th>Main Topic</th>
+                <th>Format</th>
+                <th>Likes</th>
+                <th>Saves</th>
+                <th>Comments</th>
+                <th>Shares</th>
+                <th>Reach</th>
+                <th>Views</th>
+                <th>Avg Watch Time</th>
+                <th>Dominant Reward</th>
+                <th>Why It Works (psychological rationale)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DKfcutlof1i/" target="_blank">https://www.instagram.com/p/DKfcutlof1i/</a></td>
+                <td>Test Structure and Scoring</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>2328</td>
+                <td>0</td>
+                <td>245</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'Test Structure and Scoring' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DPzF6L3CKlS/" target="_blank">https://www.instagram.com/p/DPzF6L3CKlS/</a></td>
+                <td>IMAT Test Status</td>
+                <td>text_only_carousel</td>
+                <td>1371</td>
+                <td>0</td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability / Self</td>
+                <td>This post delivers critical, timely updates or comprehensive information regarding 'IMAT Test Status'. It resonates by addressing common anxieties and uncertainties, providing clarity that helps users feel understood and equipped to navigate complex changes. It validates their shared experience while offering practical knowledge.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJrf1pAI692/" target="_blank">https://www.instagram.com/p/DJrf1pAI692/</a></td>
+                <td>University Rankings</td>
+                <td>text_and_icon_carousel</td>
+                <td>1386</td>
+                <td>0</td>
+                <td>56</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability / Self</td>
+                <td>This post delivers critical, timely updates or comprehensive information regarding 'University Rankings'. It resonates by addressing common anxieties and uncertainties, providing clarity that helps users feel understood and equipped to navigate complex changes. It validates their shared experience while offering practical knowledge.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJ1Rse3IgRv/" target="_blank">https://www.instagram.com/p/DJ1Rse3IgRv/</a></td>
+                <td>Medical Reform Updates</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>861</td>
+                <td>0</td>
+                <td>231</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'Medical Reform Updates' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DPWB1ZYiN8F/" target="_blank">https://www.instagram.com/p/DPWB1ZYiN8F/</a></td>
+                <td>University Enrollment Process</td>
+                <td>talking_head_video_and_screen_recording</td>
+                <td>823</td>
+                <td>0</td>
+                <td>10</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Self / Relatability</td>
+                <td>The content provides actionable information or strategic advice on topics such as 'University Enrollment Process'. It aims to empower students with knowledge and tools, tapping into their aspiration for personal growth and competence for the high-stakes exams. While direct 'save' metrics are unavailable, the nature of the content suggests a strong underlying utility.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DObVU6diMJF/" target="_blank">https://www.instagram.com/p/DObVU6diMJF/</a></td>
+                <td>University Comparison (Northern Italy)</td>
+                <td>text_and_icon_carousel</td>
+                <td>991</td>
+                <td>0</td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability / Self</td>
+                <td>This post delivers critical, timely updates or comprehensive information regarding 'University Comparison (Northern Italy)'. It resonates by addressing common anxieties and uncertainties, providing clarity that helps users feel understood and equipped to navigate complex changes. It validates their shared experience while offering practical knowledge.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJo6QOhoYzC/" target="_blank">https://www.instagram.com/p/DJo6QOhoYzC/</a></td>
+                <td>Mandatory Attendance Rules</td>
+                <td>text_only_carousel</td>
+                <td>903</td>
+                <td>0</td>
+                <td>7</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability / Self</td>
+                <td>This post delivers critical, timely updates or comprehensive information regarding 'Mandatory Attendance Rules'. It resonates by addressing common anxieties and uncertainties, providing clarity that helps users feel understood and equipped to navigate complex changes. It validates their shared experience while offering practical knowledge.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DP4VqudCB9w/" target="_blank">https://www.instagram.com/p/DP4VqudCB9w/</a></td>
+                <td>Test Accessibility for Disabilities</td>
+                <td>text_only_carousel</td>
+                <td>1254</td>
+                <td>0</td>
+                <td>371</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'Test Accessibility for Disabilities' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DL0TEc4tbwg/" target="_blank">https://www.instagram.com/p/DL0TEc4tbwg/</a></td>
+                <td>Test Structure</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>1156</td>
+                <td>0</td>
+                <td>122</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'Test Structure' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DKr_FmFoNar/" target="_blank">https://www.instagram.com/p/DKr_FmFoNar/</a></td>
+                <td>Competitive Healthcare Professions</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>847</td>
+                <td>0</td>
+                <td>823</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'Competitive Healthcare Professions' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DN3RuZqUNJ1/" target="_blank">https://www.instagram.com/p/DN3RuZqUNJ1/</a></td>
+                <td>Mental Math Strategies</td>
+                <td>text_and_icon_carousel</td>
+                <td>713</td>
+                <td>0</td>
+                <td>13</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Self / Relatability</td>
+                <td>The content provides actionable information or strategic advice on topics such as 'Mental Math Strategies'. It aims to empower students with knowledge and tools, tapping into their aspiration for personal growth and competence for the high-stakes exams. While direct 'save' metrics are unavailable, the nature of the content suggests a strong underlying utility.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DMqJoeWI1y3/" target="_blank">https://www.instagram.com/p/DMqJoeWI1y3/</a></td>
+                <td>Test Strategy for Guessing</td>
+                <td>text_only_carousel</td>
+                <td>1553</td>
+                <td>0</td>
+                <td>14</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Self / Relatability</td>
+                <td>The content provides actionable information or strategic advice on topics such as 'Test Strategy for Guessing'. It aims to empower students with knowledge and tools, tapping into their aspiration for personal growth and competence for the high-stakes exams. While direct 'save' metrics are unavailable, the nature of the content suggests a strong underlying utility.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DOGjuHyiPsj/" target="_blank">https://www.instagram.com/p/DOGjuHyiPsj/</a></td>
+                <td>Test Dates and Cost</td>
+                <td>text_and_icon_carousel</td>
+                <td>1262</td>
+                <td>0</td>
+                <td>116</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'Test Dates and Cost' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLsh4HioPQl/" target="_blank">https://www.instagram.com/p/DLsh4HioPQl/</a></td>
+                <td>Competitive Healthcare Professions</td>
+                <td>text_and_icon_carousel</td>
+                <td>809</td>
+                <td>0</td>
+                <td>136</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'Competitive Healthcare Professions' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DM-oVVionT_/" target="_blank">https://www.instagram.com/p/DM-oVVionT_/</a></td>
+                <td>Online vs. In-Person Learning</td>
+                <td>text_and_icon_carousel</td>
+                <td>1120</td>
+                <td>0</td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability</td>
+                <td>This content focuses on a shared student experience or uses humor related to 'Online vs. In-Person Learning'. It affirms users' internal experiences, normalizing common struggles and fostering a sense of collective identity and belonging. The content implicitly tells users, 'You are not alone in this experience.'</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLIlTAkIOeC/" target="_blank">https://www.instagram.com/p/DLIlTAkIOeC/</a></td>
+                <td>Official Test Dates</td>
+                <td>text_only_carousel</td>
+                <td>1352</td>
+                <td>0</td>
+                <td>78</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability / Self</td>
+                <td>This post delivers critical, timely updates or comprehensive information regarding 'Official Test Dates'. It resonates by addressing common anxieties and uncertainties, providing clarity that helps users feel understood and equipped to navigate complex changes. It validates their shared experience while offering practical knowledge.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLaFL2-oru8/" target="_blank">https://www.instagram.com/p/DLaFL2-oru8/</a></td>
+                <td>ChatGPT Study Mode</td>
+                <td>text_and_icon_carousel</td>
+                <td>817</td>
+                <td>0</td>
+                <td>328</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'ChatGPT Study Mode' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DMdGzisI7KZ/" target="_blank">https://www.instagram.com/p/DMdGzisI7KZ/</a></td>
+                <td>Headache Types and Causes</td>
+                <td>text_and_icon_carousel</td>
+                <td>947</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability</td>
+                <td>This content focuses on a shared student experience or uses humor related to 'Headache Types and Causes'. It affirms users' internal experiences, normalizing common struggles and fostering a sense of collective identity and belonging. The content implicitly tells users, 'You are not alone in this experience.'</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJGs6pkIH8B/" target="_blank">https://www.instagram.com/p/DJGs6pkIH8B/</a></td>
+                <td>Medical School Competition</td>
+                <td>text_and_icon_carousel</td>
+                <td>714</td>
+                <td>0</td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability / Self</td>
+                <td>This post delivers critical, timely updates or comprehensive information regarding 'Medical School Competition'. It resonates by addressing common anxieties and uncertainties, providing clarity that helps users feel understood and equipped to navigate complex changes. It validates their shared experience while offering practical knowledge.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DMIwb-QIZFh/" target="_blank">https://www.instagram.com/p/DMIwb-QIZFh/</a></td>
+                <td>Medical Decree Announcement</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>973</td>
+                <td>0</td>
+                <td>157</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'Medical Decree Announcement' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DKMQzCUoNpn/" target="_blank">https://www.instagram.com/p/DKMQzCUoNpn/</a></td>
+                <td>IMAT and Private Universities Exclusion from Reform</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>2961</td>
+                <td>0</td>
+                <td>262</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'IMAT and Private Universities Exclusion from Reform' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DM0aIpeIk-T/" target="_blank">https://www.instagram.com/p/DM0aIpeIk-T/</a></td>
+                <td>New Scoring System and Strategy</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>901</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Self / Relatability</td>
+                <td>The content provides actionable information or strategic advice on topics such as 'New Scoring System and Strategy'. It aims to empower students with knowledge and tools, tapping into their aspiration for personal growth and competence for the high-stakes exams. While direct 'save' metrics are unavailable, the nature of the content suggests a strong underlying utility.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DP1H7WPiKTD/" target="_blank">https://www.instagram.com/p/DP1H7WPiKTD/</a></td>
+                <td>Test Scoring Changes</td>
+                <td>text_and_icon_carousel</td>
+                <td>747</td>
+                <td>0</td>
+                <td>193</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'Test Scoring Changes' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DMS4c4ft2PO/" target="_blank">https://www.instagram.com/p/DMS4c4ft2PO/</a></td>
+                <td>Pupil Dilation Causes</td>
+                <td>text_and_icon_carousel</td>
+                <td>1068</td>
+                <td>0</td>
+                <td>30</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability</td>
+                <td>This content focuses on a shared student experience or uses humor related to 'Pupil Dilation Causes'. It affirms users' internal experiences, normalizing common struggles and fostering a sense of collective identity and belonging. The content implicitly tells users, 'You are not alone in this experience.'</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DI_rAKGo-Pv/" target="_blank">https://www.instagram.com/p/DI_rAKGo-Pv/</a></td>
+                <td>Delayed Medical Decree</td>
+                <td>text_and_icon_carousel</td>
+                <td>1029</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability / Self</td>
+                <td>This post delivers critical, timely updates or comprehensive information regarding 'Delayed Medical Decree'. It resonates by addressing common anxieties and uncertainties, providing clarity that helps users feel understood and equipped to navigate complex changes. It validates their shared experience while offering practical knowledge.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DKe_YRgoGI-/" target="_blank">https://www.instagram.com/p/DKe_YRgoGI-/</a></td>
+                <td>Medical School in Albania Meme</td>
+                <td>meme_carousel</td>
+                <td>987</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability</td>
+                <td>This content focuses on a shared student experience or uses humor related to 'Medical School in Albania Meme'. It affirms users' internal experiences, normalizing common struggles and fostering a sense of collective identity and belonging. The content implicitly tells users, 'You are not alone in this experience.'</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJmv5cYowh-/" target="_blank">https://www.instagram.com/p/DJmv5cYowh-/</a></td>
+                <td>Medical Test Modalities</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>934</td>
+                <td>0</td>
+                <td>40</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability / Self</td>
+                <td>This post delivers critical, timely updates or comprehensive information regarding 'Medical Test Modalities'. It resonates by addressing common anxieties and uncertainties, providing clarity that helps users feel understood and equipped to navigate complex changes. It validates their shared experience while offering practical knowledge.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/reel/DLRvhdTIDbI/" target="_blank">https://www.instagram.com/reel/DLRvhdTIDbI/</a></td>
+                <td>Online Test Simulations</td>
+                <td>VIDEO</td>
+                <td>734</td>
+                <td>0</td>
+                <td>216</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00s</td>
+                <td>Social</td>
+                <td>This post generated significant public discussion and interaction (high comments count). The topic 'Online Test Simulations' clearly struck a chord, encouraging users to voice their opinions, ask questions, or share experiences, fulfilling their need for social connection and being heard within the community.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/reel/DJYqYB3Id40/" target="_blank">https://www.instagram.com/reel/DJYqYB3Id40/</a></td>
+                <td>Official Syllabus Analysis</td>
+                <td>VIDEO</td>
+                <td>885</td>
+                <td>0</td>
+                <td>19</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00s</td>
+                <td>Self / Relatability</td>
+                <td>The content provides actionable information or strategic advice on topics such as 'Official Syllabus Analysis'. It aims to empower students with knowledge and tools, tapping into their aspiration for personal growth and competence for the high-stakes exams. While direct 'save' metrics are unavailable, the nature of the content suggests a strong underlying utility.</td>
+            </tr>
+            <tr>
+                <td>N/A (PDF Document)</td>
+                <td>Medical Semester Filter Debate</td>
+                <td>text_and_icon_carousel</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability / Self / Social (general information)</td>
+                <td>This content provides general information relevant to the target audience. Its appeal likely stems from a blend of validating shared experiences, offering useful insights, and inviting interaction on important topics.</td>
+            </tr>
+            <tr>
+                <td>N/A (PDF Document)</td>
+                <td>Medical School Enrollment Statistics</td>
+                <td>text_and_icon_carousel</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability / Self / Social (general information)</td>
+                <td>This content provides general information relevant to the target audience. Its appeal likely stems from a blend of validating shared experiences, offering useful insights, and inviting interaction on important topics.</td>
+            </tr>
+            <tr>
+                <td>N/A (PDF Document)</td>
+                <td>Post-Graduation Employment Data</td>
+                <td>text_and_icon_carousel</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Relatability / Self / Social (general information)</td>
+                <td>This content provides general information relevant to the target audience. Its appeal likely stems from a blend of validating shared experiences, offering useful insights, and inviting interaction on important topics.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Key Takeaways & Strategic Recommendations</h2>
+    <ul>
+        <li><strong>Prioritize Interactive Content around Official Updates:</strong> The highest engagement (comments) occurs on posts providing critical official news (e.g., decrees, test changes, accessibility information) combined with a clear call-to-action for discussion or resource acquisition. Continuously deliver these updates promptly and integrate strong invitations for audience input to maximize Social Reward.</li>
+        <li><strong>Deepen Self-Reward through Actionable Strategies:</strong> Posts offering direct, actionable study tips, test strategies, or how-to guides (e.g., mental math, enrollment process) are intrinsically valuable. Despite the absence of 'saves' data, the content's design caters to the Self-Reward mechanism. Emphasize step-by-step guidance and practical application to foster a sense of competence and equip students for success.</li>
+        <li><strong>Leverage Humor for Relatability and Community Bonding:</strong> Occasional meme-based or lighthearted content that addresses shared student frustrations significantly boosts Relatability. These posts validate collective experiences and create an in-group sense of belonging. Integrate these to humanize the brand and provide emotional release from the high-stress environment of test preparation.</li>
+        <li><strong>Invest in Comprehensive Video Explanations:</strong> Videos, especially talking-head and screen-recording formats, offer a powerful medium for complex explanations and direct guidance (e.g., "University Enrollment Process"). Although video metrics are currently unavailable, this format can significantly enhance Self-Reward by making difficult procedures or concepts digestible and relatable through direct human connection. Prioritize clear, concise, and visually supported explanations.</li>
+        <li><strong>Reinforce Authority with Data-Driven Insights:</strong> Content around university rankings, competition statistics, and syllabus analysis positions Testbusters as an expert. This data-driven approach enhances Self-Reward by providing objective tools for decision-making and Relatability by addressing the core uncertainties students face when choosing their academic path.</li>
+    </ul>
+
+    <h2>Potential Areas for Improvement</h2>
+    <p>The current dataset exhibits uniform zero values for 'saves', 'shares', 'reach', 'profile_visits', 'follows', 'views', and 'avg_watch_time'. This significantly limits the ability to precisely measure and optimize for Relatability, Self-Reward, and audience growth/conversion directly via these metrics. Without accurate tracking of these foundational metrics, the full impact of content on user behavior and the effectiveness of the reward framework cannot be definitively quantified. Implementing robust analytics tracking for these specific data points is critical for future performance optimization and strategic refinement, allowing for a more granular understanding of user utility, identity affirmation, and content amplification.</p>
+
+</body>
+</html>

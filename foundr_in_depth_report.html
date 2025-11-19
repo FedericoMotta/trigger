@@ -1,0 +1,711 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundr In-Depth Instagram Analysis</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; margin: 20px; background-color: #f9f9f9; }
+        h1 { color: #2c3e50; font-size: 2em; margin-bottom: 0.5em; }
+        h2 { color: #34495e; font-size: 1.6em; margin-top: 1.5em; margin-bottom: 0.8em; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        h3 { color: #555; font-size: 1.2em; margin-top: 1.2em; margin-bottom: 0.6em; }
+        p { margin-bottom: 1em; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; color: #333; font-weight: bold; }
+        tr:nth-child(even) { background-color: #fdfdfd; }
+        a { color: #3498db; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { list-style-type: disc; margin-left: 20px; margin-bottom: 1em; }
+        .note { background-color: #fff3cd; border-left: 5px solid #ffeeba; padding: 10px 15px; margin-bottom: 1em; color: #856404; }
+        .framework-section { background-color: #e8f5e9; border: 1px solid #d4edda; padding: 15px; border-radius: 5px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <h1>Foundr In-Depth Analysis</h1>
+    <p><strong>Posts Considered:</strong> 23 (as provided in the dataset)</p>
+    <p><strong>Method Used:</strong> Behavioural Reward Framework + Conversion Metrics (Partial Data)</p>
+
+    <h2>Reward Model Overview:</h2>
+    <p><strong>Relatability:</strong> Recognition and identity resonance (likes + shares vs reach).</p>
+    <p><strong>Self:</strong> Personal utility and retained value (saves, saves/likes).</p>
+    <p><strong>Social:</strong> Belonging, signaling, and interaction (comments, replies, share-driven discussion).</p>
+
+    <div class="note">
+        <p><strong>Important Data Limitation Note:</strong> The provided dataset explicitly lacks key metrics for a comprehensive analysis. Specifically, "saves", "shares", "reach", "profile_visits", "follows", "replies", "ig_reels_video_view_total_time", and "ig_reels_avg_watch_time" are not present. Consequently, the derived KPIs for Relatability Rate (<code>(likes + shares) / reach</code>) and Self Rate (<code>saves / likes</code>), along with detailed Reels performance metrics and conversion analysis (profile visits to follows), cannot be accurately computed or fully analyzed. This analysis proceeds with available data, indicating "N/A" where metrics are unavailable, and drawing inferences based on content where direct behavioral signals are absent.</p>
+    </div>
+
+    <h2>Narrative & Psychological Insights:</h2>
+    <p>The Foundr Instagram account establishes a clear emotional and psychological narrative centered on the arduous, often unglamorous, journey of entrepreneurship. The content consistently validates the inherent struggles – self-doubt, feeling invisible, the slow pace of progress, and the temptation to quit. It functions as a digital companion for founders, acknowledging their internal world and external challenges. The core narrative is one of resilient persistence: success is not about flashy wins but about consistent, quiet effort and the fortitude to "keep building" even when no one is clapping. Psychologically, this narrative strongly leverages <strong>Relatability</strong> by mirroring the private anxieties and frustrations of its audience, fostering a sense of shared experience and belonging within the "founder" identity group. It simultaneously activates <strong>Self Reward</strong> by reframing these struggles as normal, necessary, and ultimately transformative, implicitly empowering users with a mindset that cultivates personal growth and endurance. The content models tenacity, providing vicarious reinforcement that sustained effort, despite difficulty, leads to meaningful outcomes.</p>
+
+    <h2>Summary Table: Top 10 Posts (Ranked by Likes)</h2>
+    <p class="note">Due to the absence of 'shares' and 'reach' in the provided dataset, the 'Relatability Rate' cannot be calculated. Therefore, this table ranks posts by 'Likes' as the most direct proxy for initial content resonance.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Post URL</th>
+                <th>Main Topic</th>
+                <th>Format</th>
+                <th>Likes</th>
+                <th>Saves</th>
+                <th>Comments</th>
+                <th>Shares</th>
+                <th>Reach</th>
+                <th>Relatability Rate</th>
+                <th>Self Rate</th>
+                <th>Social Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="https://www.instagram.com/reel/DJNmNG4MMr-/" target="_blank">https://www.instagram.com/reel/DJNmNG4MMr-/</a></td>
+                <td>Entrepreneurship journey</td>
+                <td>VIDEO</td>
+                <td>23903</td>
+                <td>N/A</td>
+                <td>97</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0.41%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DP2c0JxE9ko/" target="_blank">https://www.instagram.com/p/DP2c0JxE9ko/</a></td>
+                <td>Entrepreneurship challenges</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>23604</td>
+                <td>N/A</td>
+                <td>733</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>3.10%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLljO8LTg5G/" target="_blank">https://www.instagram.com/p/DLljO8LTg5G/</a></td>
+                <td>Entrepreneurship motivation</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>21014</td>
+                <td>N/A</td>
+                <td>821</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>3.90%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DNjsSq_PE_V/" target="_blank">https://www.instagram.com/p/DNjsSq_PE_V/</a></td>
+                <td>Entrepreneurship motivation</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>20172</td>
+                <td>N/A</td>
+                <td>772</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>3.83%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DKPlCxzqJfd/" target="_blank">https://www.instagram.com/p/DKPlCxzqJfd/</a></td>
+                <td>Entrepreneurship motivation</td>
+                <td>IMAGE</td>
+                <td>17891</td>
+                <td>N/A</td>
+                <td>292</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>1.63%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJo2NW0Bkok/" target="_blank">https://www.instagram.com/p/DJo2NW0Bkok/</a></td>
+                <td>Entrepreneurship mindset</td>
+                <td>IMAGE</td>
+                <td>17195</td>
+                <td>N/A</td>
+                <td>155</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0.90%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLh3j9Dh-dB/" target="_blank">https://www.instagram.com/p/DLh3j9Dh-dB/</a></td>
+                <td>Entrepreneurship motivation</td>
+                <td>IMAGE</td>
+                <td>16318</td>
+                <td>N/A</td>
+                <td>157</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0.96%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLShtBUuElG/" target="_blank">https://www.instagram.com/p/DLShtBUuElG/</a></td>
+                <td>Business strategy</td>
+                <td>IMAGE</td>
+                <td>14999</td>
+                <td>N/A</td>
+                <td>164</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>1.09%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJiOsmYzYWl/" target="_blank">https://www.instagram.com/p/DJiOsmYzYWl/</a></td>
+                <td>Entrepreneurship journey</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>13986</td>
+                <td>N/A</td>
+                <td>234</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>1.67%</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DP20AWQk_sH/" target="_blank">https://www.instagram.com/p/DP20AWQk_sH/</a></td>
+                <td>Startup building strategy</td>
+                <td>IMAGE</td>
+                <td>13589</td>
+                <td>N/A</td>
+                <td>125</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0.92%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>1. Content Pillar Analysis</h2>
+
+    <h3>Mindset & Motivation</h3>
+    <ul>
+        <li><strong>Topics included:</strong> Entrepreneurship motivation, challenges, mindset, journey.</li>
+        <li><strong>Narrative focus:</strong> This pillar directly addresses the psychological toll and emotional reality of building a business. It normalizes struggle, emphasizes persistence over perfection, and celebrates incremental progress. Captions frequently offer affirmations and reassurance, such as "You're not behind. You're building." or "Hard is normal. Keep building."</li>
+        <li><strong>Psychological why it performs:</strong> These posts excel at activating the <strong>Relatability Reward</strong>. By articulating the unspoken anxieties and loneliness of the founder's journey, they create deep emotional resonance. Users experience identity affirmation: "That's me. And that means I belong." (SIT). The content validates their internal experiences, reducing isolation and providing vicarious emotional modeling (SLT) that it is acceptable to feel tired, uncertain, or slow. This is evident in high like counts for posts that validate these feelings.</li>
+    </ul>
+
+    <h3>Strategy & Execution</h3>
+    <ul>
+        <li><strong>Topics included:</strong> Business growth strategy, startup building strategy, startup launching strategy, product market fit, product development strategy, business strategy, entrepreneurship learning.</li>
+        <li><strong>Narrative focus:</strong> This pillar shifts from emotional validation to practical guidance. It simplifies complex business concepts into actionable steps, debunks common entrepreneurial myths (e.g., needing perfection before launching), and focuses on efficiency, learning through action, and strategic prioritization. Captions often include explicit calls to action for resources, e.g., "Comment SCORECARD".</li>
+        <li><strong>Psychological why it performs:</strong> This content is designed to trigger the <strong>Self Reward</strong>. While direct "saves" metrics are unavailable, the instructional nature of these posts strongly implies utility and perceived personal growth. They offer insight and tools for coping and building, activating the aspirational dimension of engagement. Users perceive that "this content brings me closer to a version of myself I want to reach." (SLT). The emphasis on "start messy," "launch anyway," and "learn by doing it wrong first" provides concrete, replicable behaviors, increasing self-efficacy (Bandura, 1997) by making success feel attainable even for beginners.</li>
+    </ul>
+
+    <h3>Highest Performing Topics & Why:</h3>
+    <ul>
+        <li><strong>Relatability (likes + shares vs reach):</strong> Full analysis is limited due to the absence of 'shares' and 'reach' metrics. However, based on high 'likes', topics that acknowledge the hidden challenges and quiet struggles of entrepreneurship consistently resonate. Posts like "SOME DAYS YOUR ONLY JOB IS TO NOT QUIT." (21014 likes) and "You'll question yourself. You'll wonder if it's working. You'll want to quit." (23604 likes) directly tap into universal founder experiences, confirming users are not alone in their journey. This recognition acts as a powerful form of in-group affirmation (SIT).</li>
+        <li><strong>Self reward (saves, saves/likes):</strong> This metric cannot be calculated due to missing 'saves' data. Inferring from content, posts that offer actionable strategies and advice (e.g., "Launch before it's perfect," "START SMALL. BUT START.") are designed to provide personal utility, fostering a sense of growth and empowerment. These posts implicitly teach new behaviors and mindsets, suggesting a high potential for activating the Self Reward if save data were available.</li>
+        <li><strong>Social reward (comments, replies, call-to-action effects):</strong> Posts leveraging direct calls to action such as "Comment BUILD" or "Comment SCORECARD" demonstrate effectiveness in stimulating social interaction. Post "<a href='https://www.instagram.com/p/DNArwW7S7y1/'>https://www.instagram.com/p/DNArwW7S7y1/</a>" with 723 comments and a Social Rate of 8.53% for its specific call to action ("Comment SCORECARD") exemplifies this. These interactions signal that users feel safe and seen enough to participate, contributing to a sense of community and belonging (SIT) and learning through vicarious reinforcement (SLT) that active contribution is valued.</li>
+        <li><strong>Conversion (profile visits -> follows):</strong> This metric cannot be analyzed due to the absence of 'profile_visits' and 'follows' data in the provided dataset.</li>
+    </ul>
+
+    <h2>2. Hook Pattern Analysis</h2>
+    Foundr employs several dominant hook archetypes that effectively capture attention and initiate engagement by tapping into the target audience's core motivations and struggles.
+
+    <ol>
+        <li>
+            <h3>The Unspoken Struggle / Validation Hook</h3>
+            <ul>
+                <li><strong>Example hook quote:</strong> "Nobody claps in the beginning. But that doesn’t mean it’s not working." (<a href="https://www.instagram.com/p/DP5P0jwE64f/" target="_blank">https://www.instagram.com/p/DP5P0jwE64f/</a>)</li>
+                <li><strong>Which posts use it:</strong> "Most people quit right before it starts working." (<a href="https://www.instagram.com/p/DJvZNupTm37/" target="_blank">https://www.instagram.com/p/DJvZNupTm37/</a>), "The work isn’t the hard part. It’s believing in yourself when no one’s buying." (<a href="https://www.instagram.com/p/DKOA6wUsPAB/" target="_blank">https://www.instagram.com/p/DKOA6wUsPAB/</a>), "If you're deep in the work, feeling tired, uncertain, or slow..." (<a href="https://www.instagram.com/p/DQCQo3KE3ri/" target="_blank">https://www.instagram.com/p/DQCQo3KE3ri/</a>)</li>
+                <li><strong>Psychological effect and why it works:</strong> This archetype directly addresses the often lonely and unrecognized realities of entrepreneurship. It works by triggering the <strong>Relatability Reward</strong>, providing immediate identity affirmation (SIT). Users feel seen and understood ("That's me."), reducing feelings of isolation and normalizing their internal struggles. The hook validates their experience, creating a strong emotional connection.</li>
+            </ul>
+        </li>
+        <li>
+            <h3>The Empowering Directive Hook</h3>
+            <ul>
+                <li><strong>Example hook quote:</strong> "SOME DAYS YOUR ONLY JOB IS TO NOT QUIT. AND THAT COUNTS." (<a href="https://www.instagram.com/p/DLljO8LTg5G/" target="_blank">https://www.instagram.com/p/DLljO8LTg5G/</a>)</li>
+                <li><strong>Which posts use it:</strong> "Launch before it's perfect" (<a href="https://www.instagram.com/p/DN7Uat5k_O_/" target="_blank">https://www.instagram.com/p/DN7Uat5k_O_/</a>), "You're not behind. You're building." (<a href="https://www.instagram.com/p/DNjsSq_PE_V/" target="_blank">https://www.instagram.com/p/DNjsSq_PE_V/</a>), "Build what you wish existed." (<a href="https://www.instagram.com/p/DMw8NwWP19l/" target="_blank">https://www.instagram.com/p/DMw8NwWP19l/</a>)</li>
+                <li><strong>Psychological effect and why it works:</strong> This hook offers direct encouragement and reframes challenges with a positive, actionable mindset. It activates the <strong>Self Reward</strong> by providing a sense of agency and empowerment. Users are told what to do or how to perceive their journey, offering clear behavioral models and increasing self-efficacy (SLT). It shifts focus from external validation to internal strength and consistent action, fostering personal growth.</li>
+            </ul>
+        </li>
+        <li>
+            <h3>The Counter-Intuitive / Myth-Busting Hook</h3>
+            <ul>
+                <li><strong>Example hook quote:</strong> "Consistency is still the best growth hack." (<a href="https://www.instagram.com/p/DNArwW7S7s1/" target="_blank">https://www.instagram.com/p/DNArwW7S7s1/</a>)</li>
+                <li><strong>Which posts use it:</strong> "Here's the truth: Success rarely looks exciting while it's happening." (<a href="https://www.instagram.com/p/DJ7_1V5o3o0/" target="_blank">https://www.instagram.com/p/DJ7_1V5o3o0/</a>), "Everyone wants to grow fast. But too much growth can actually break your business." (<a href="https://www.instagram.com/p/DKSC6UkN63t/" target="_blank">https://www.instagram.com/p/DKSC6UkN63t/</a>), "Don't build what's trending. Build what's missing." (<a href="https://www.instagram.com/p/DKKbbgWBcy4/" target="_blank">https://www.instagram.com/p/DKKbbgWBcy4/</a>)</li>
+                <li><strong>Psychological effect and why it works:</strong> These hooks challenge common entrepreneurial assumptions, offering fresh perspectives that often feel more authentic and grounded. They engage users by disrupting expectations and providing alternative, often more sustainable, models for success. This appeals to the <strong>Self Reward</strong> by offering new insights and a refined understanding of the path to growth (SLT), enabling users to learn from vicarious observation of effective, non-glamorous behaviors.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>3. Format & Tone of Voice Analysis</h2>
+
+    <p>The dataset includes three primary formats: `CAROUSEL_ALBUM` (multi-image posts), `IMAGE` (static single image posts, often text-only or with simple graphics), and `VIDEO` (including Reels). The majority of posts are `CAROUSEL_ALBUM` or `IMAGE` formats, with only one `VIDEO` post provided in this sample.</p>
+
+    <ul>
+        <li><strong>Reels (VIDEO):</strong> The single Reel (<a href="https://www.instagram.com/reel/DJNmNG4MMr-/" target="_blank">https://www.instagram.com/reel/DJNmNG4MMr-/</a>) shows a high `like_count` (23903) but a comparatively low `comments_count` (97) and thus a low `Social Rate` (0.41%). The `view_count` is 348,081. Specific average watch time and completion metrics for Reels are not available in the dataset, limiting deep performance analysis. However, the high view count suggests strong initial capture, but the lower comment rate for its scale indicates it may primarily deliver <strong>Relatability</strong> through passive consumption rather than active discussion.</li>
+        <li><strong>Carousels (CAROUSEL_ALBUM):</strong> Carousels are a prevalent format. Due to missing 'saves' data, an analysis of save density cannot be provided. However, Carousels often contain multi-slide advice or detailed perspectives (e.g., "<a href="https://www.instagram.com/p/DP20AWQk_sH/" target="_blank">https://www.instagram.com/p/DP20AWQk_sH/</a>" and "<a href="https://www.instagram.com/p/DJ7_1V5o3o0/" target="_blank">https://www.instagram.com/p/DJ7_1V5o3o0/</a>"), indicating an intention to deliver <strong>Self Reward</strong> through actionable, structured content. They encourage users to spend more time absorbing information.</li>
+        <li><strong>Static Image Posts (IMAGE):</strong> Many static image posts are text-only quotes, often with a stark, impactful design. These posts generally achieve high 'likes', demonstrating strong <strong>Relatability</strong> and emotional resonance. The directness of the message, often a single powerful statement, facilitates quick identification and affirmation. Share triggers cannot be assessed due to missing data.</li>
+    </ul>
+
+    <h3>Psychological Effect of the Account's Tone of Voice:</h3>
+    The account's tone is consistently direct, empathetic, and authoritative, yet deeply encouraging. It adopts a "tough love" approach that acknowledges the difficulty of the entrepreneurial journey while simultaneously galvanizing the audience to persist. The language is simple, declarative, and avoids jargon, creating an accessible and relatable voice. Psychologically, this tone builds trust and credibility. It positions Foundr as a prototype (Turner et al., 1987) within the entrepreneurial in-group, a leader who understands their struggles and provides reliable guidance. This authoritative yet understanding voice fosters a sense of safety and inclusion, making users more receptive to the messages of endurance and growth. It appeals to the fundamental human need for belonging and validation (Baumeister & Leary, 1995), reinforcing the group identity of resilient founders.
+
+    <h2>4. Behavioral Reward Mapping (Full Dataset Table)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Post URL</th>
+                <th>Main Topic</th>
+                <th>Format</th>
+                <th>Likes</th>
+                <th>Saves</th>
+                <th>Comments</th>
+                <th>Shares</th>
+                <th>Reach</th>
+                <th>Views</th>
+                <th>Avg Watch Time</th>
+                <th>Dominant Reward</th>
+                <th>Why It Works (psychological rationale)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DP5P0jwE64f/" target="_blank">https://www.instagram.com/p/DP5P0jwE64f/</a></td>
+                <td>Entrepreneurship motivation</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>9037</td>
+                <td>N/A</td>
+                <td>424</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability & Social</td>
+                <td>Hook ("Nobody claps in the beginning") directly validates the unspoken, lonely struggle of early-stage entrepreneurship (SIT). The call-to-action in the caption ("Comment BUILD") fosters social interaction, encouraging communal affirmation.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJvZNupTm37/" target="_blank">https://www.instagram.com/p/DJvZNupTm37/</a></td>
+                <td>Entrepreneurship motivation</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>7087</td>
+                <td>N/A</td>
+                <td>100</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability</td>
+                <td>The hook ("Most people quit right before it starts working.") hits a common point of entrepreneurial vulnerability, confirming a shared experience and normalizing doubt (SIT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DNArwW7S7s1/" target="_blank">https://www.instagram.com/p/DNArwW7S7s1/</a></td>
+                <td>Business growth strategy</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>8471</td>
+                <td>N/A</td>
+                <td>723</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Self & Social</td>
+                <td>Hook ("Consistency is still the best growth hack.") offers a practical, counter-intuitive insight (SLT). The strong call-to-action ("Comment SCORECARD") drives high comment engagement, providing a Social Reward by making users feel their input matters for a collective outcome.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DKOA6wUsPAB/" target="_blank">https://www.instagram.com/p/DKOA6wUsPAB/</a></td>
+                <td>Entrepreneurship challenges</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>6885</td>
+                <td>N/A</td>
+                <td>110</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability</td>
+                <td>Acknowledges the psychological difficulty of belief when external validation is absent ("It’s believing in yourself when no one’s buying."), affirming a deeply personal and often unshared struggle (SIT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLljO8LTg5G/" target="_blank">https://www.instagram.com/p/DLljO8LTg5G/</a></td>
+                <td>Entrepreneurship motivation</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>21014</td>
+                <td>N/A</td>
+                <td>821</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability & Self</td>
+                <td>Powerful, validating hook ("SOME DAYS YOUR ONLY JOB IS TO NOT QUIT.") offers immense emotional recognition (SIT). It reframes "not quitting" as a legitimate form of progress, fostering a sense of capability and growth (SLT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJYbqhbPDrg/" target="_blank">https://www.instagram.com/p/DJYbqhbPDrg/</a></td>
+                <td>Startup building strategy</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>7411</td>
+                <td>N/A</td>
+                <td>84</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Self</td>
+                <td>This carousel focuses on sequential steps ("create the offer," "validate demand"), providing clear, actionable guidance that enables personal growth and skill acquisition (SLT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJ7_1V5o3o0/" target="_blank">https://www.instagram.com/p/DJ7_1V5o3o0/</a></td>
+                <td>Entrepreneurship mindset</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>10666</td>
+                <td>N/A</td>
+                <td>140</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability & Self</td>
+                <td>The hook ("Success rarely looks exciting while it's happening.") reframes the unglamorous reality of building a business, offering both recognition of current experience (SIT) and a shift in perspective for future growth (SLT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLGoIeUNKRi/" target="_blank">https://www.instagram.com/p/DLGoIeUNKRi/</a></td>
+                <td>Entrepreneurship challenges</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>6815</td>
+                <td>N/A</td>
+                <td>311</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability & Social</td>
+                <td>The detailed hook outlining common entrepreneurial struggles ("When the product is live, but no one's buying.") fosters strong relatability (SIT). The caption's call-to-action ("Comment BUILD") encourages social validation and shared commitment.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DN7Uat5k_O_/" target="_blank">https://www.instagram.com/p/DN7Uat5k_O_/</a></td>
+                <td>Startup launching strategy</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>7426</td>
+                <td>N/A</td>
+                <td>286</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Self & Social</td>
+                <td>The directive hook ("Launch before it's perfect") provides actionable advice, empowering users to overcome inertia (SLT). The "Comment START" CTA engages users in a public declaration of intent, fostering a sense of collective action and Social Reward.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DP20AWQk_sH/" target="_blank">https://www.instagram.com/p/DP20AWQk_sH/</a></td>
+                <td>Startup building strategy</td>
+                <td>IMAGE</td>
+                <td>13589</td>
+                <td>N/A</td>
+                <td>125</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Self</td>
+                <td>The hook highlights "overthinking" as a barrier to action, then implicitly offers a solution to "break that cycle," appealing to the desire for practical self-improvement (SLT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DKSC6UkN63t/" target="_blank">https://www.instagram.com/p/DKSC6UkN63t/</a></td>
+                <td>Business growth strategy</td>
+                <td>IMAGE</td>
+                <td>7823</td>
+                <td>N/A</td>
+                <td>115</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Self</td>
+                <td>The hook ("too much growth can actually break your business") offers a counter-intuitive strategic insight, providing novel knowledge for business longevity (SLT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DPiTyBdk3XM/" target="_blank">https://www.instagram.com/p/DPiTyBdk3XM/</a></td>
+                <td>Entrepreneurship mindset</td>
+                <td>IMAGE</td>
+                <td>8739</td>
+                <td>N/A</td>
+                <td>109</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Self</td>
+                <td>The hook ("information feels like progress, but too much of it keeps you frozen") identifies a common psychological trap and implicitly offers a path to clarity through action, promoting self-efficacy (SLT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJ634POv6CN/" target="_blank">https://www.instagram.com/p/DJ634POv6CN/</a></td>
+                <td>Product market fit</td>
+                <td>IMAGE</td>
+                <td>11954</td>
+                <td>N/A</td>
+                <td>174</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Self & Social</td>
+                <td>The directive "BEFORE YOU BUILD, FIND YOUR WHO" provides critical strategic guidance, fostering competence (SLT). The "Comment SCORECARD" drives social engagement for a practical tool.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DOoI3PRjYBM/" target="_blank">https://www.instagram.com/p/DOoI3PRjYBM/</a></td>
+                <td>Entrepreneurship journey</td>
+                <td>IMAGE</td>
+                <td>8111</td>
+                <td>N/A</td>
+                <td>64</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability</td>
+                <td>The simple yet powerful hook ("This is what building feels like") offers a moment of shared understanding and emotional validation for the audience's journey (SIT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJiOsmYzYWl/" target="_blank">https://www.instagram.com/p/DJiOsmYzYWl/</a></td>
+                <td>Entrepreneurship journey</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>13986</td>
+                <td>N/A</td>
+                <td>234</td>
+                <td>N/A</td>
+                                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Self</td>
+                <td>The hook ("You write the email. You test the idea. You make the call.") emphasizes active participation and personal agency, modeling and reinforcing proactive behaviors (SLT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DP2c0JxE9ko/" target="_blank">https://www.instagram.com/p/DP2c0JxE9ko/</a></td>
+                <td>Entrepreneurship challenges</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>23604</td>
+                <td>N/A</td>
+                <td>733</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability & Social</td>
+                <td>The hook ("You'll question yourself. You'll wonder if it's working. You'll want to quit.") validates deep emotional struggles (SIT). The strong call to action in the caption drives significant social interaction, reinforcing group connection.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DNDtvQezuzC/" target="_blank">https://www.instagram.com/p/DNDtvQezuzC/</a></td>
+                <td>Entrepreneurship motivation</td>
+                <td>IMAGE</td>
+                <td>9576</td>
+                <td>N/A</td>
+                <td>146</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability</td>
+                <td>"You won't always feel progress. But every small step adds up." acknowledges a common emotional state (lack of perceived progress) while offering reassurance, fostering identity affirmation (SIT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DNjsSq_PE_V/" target="_blank">https://www.instagram.com/p/DNjsSq_PE_V/</a></td>
+                <td>Entrepreneurship motivation</td>
+                <td>CAROUSEL_ALBUM</td>
+                <td>20172</td>
+                <td>N/A</td>
+                <td>772</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability & Self</td>
+                <td>The hook ("You're not behind. You're building.") directly reframes a common anxiety, offering both emotional validation (SIT) and a renewed sense of purpose and progress (SLT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DQCQo3KE3ri/" target="_blank">https://www.instagram.com/p/DQCQo3KE3ri/</a></td>
+                <td>Entrepreneurship challenges</td>
+                <td>IMAGE</td>
+                <td>7388</td>
+                <td>N/A</td>
+                <td>100</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability</td>
+                <td>"If you're deep in the work, feeling tired, uncertain, or slow..." provides a precise reflection of the audience's internal experience, creating immediate resonance and validation (SIT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DLpl-v-sK_z/" target="_blank">https://www.instagram.com/p/DLpl-v-sK_z/</a></td>
+                <td>Entrepreneurship challenges</td>
+                <td>IMAGE</td>
+                <td>10005</td>
+                <td>N/A</td>
+                <td>96</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability & Self</td>
+                <td>The hook ("This is the part no one claps for. But it's the part that matters most.") validates quiet, hard work, offering recognition (SIT) and reinforcing the value of personal persistence (SLT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DJUWrVWKGiX/" target="_blank">https://www.instagram.com/p/DJUWrVWKGiX/</a></td>
+                <td>Entrepreneurship motivation</td>
+                <td>IMAGE</td>
+                <td>9766</td>
+                <td>N/A</td>
+                <td>87</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Self</td>
+                <td>"It's not glamorous. But it's movement. And movement builds momentum." provides an empowering reframe of effort, motivating continued action and perceived progress (SLT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/reel/DJNmNG4MMr-/" target="_blank">https://www.instagram.com/reel/DJNmNG4MMr-/</a></td>
+                <td>Entrepreneurship journey</td>
+                <td>VIDEO</td>
+                <td>23903</td>
+                <td>N/A</td>
+                <td>97</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>348081</td>
+                <td>N/A</td>
+                <td>Relatability</td>
+                <td>The hook describing the continuous effort of showing up ("But you keep showing up. You fix one thing. Then the next.") deeply resonates with the grind of entrepreneurship, providing strong emotional recognition (SIT).</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/p/DOWHRKDgcRO/" target="_blank">https://www.instagram.com/p/DOWHRKDgcRO/</a></td>
+                <td>Entrepreneurship challenges</td>
+                <td>IMAGE</td>
+                <td>11551</td>
+                <td>N/A</td>
+                <td>126</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>Relatability</td>
+                <td>"Not every day is exciting. Most of it is quiet, repetitive, and uncertain." offers stark realism that founders relate to, affirming their daily experiences (SIT).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Key Takeaways & Strategic Recommendations</h2>
+    <ul>
+        <li><strong>Prioritize Emotional Relatability:</strong> Foundr consistently excels at validating the emotional realities and unspoken struggles of entrepreneurs. Content that acknowledges difficulty, normalizes self-doubt, and celebrates quiet persistence drives significant initial engagement (high likes). Continue to produce content that directly reflects the authentic internal and external experiences of the target audience.</li>
+        <li><strong>Amplify Self-Empowerment through Actionable Guidance:</strong> The account's strength lies in providing implicit Self Reward by reframing challenges and offering actionable mindsets. Explicitly integrate more "how-to" and "step-by-step" frameworks in carousel or video formats (if full metrics can be captured). This fosters a sense of competence and personal growth, encouraging users to adopt new behaviors (SLT).</li>
+        <li><strong>Strategically Leverage Call-to-Actions for Social Engagement:</strong> Posts with clear "Comment [Keyword]" calls to action generate strong social interaction, indicating a desire for collective participation and validation. Systematically embed these CTAs in high-performing content types to create more opportunities for Social Reward, fostering community and a sense of shared journey.</li>
+        <li><strong>Diversify and Test Reels Formats with Full Analytics:</strong> While the single Reel in the dataset shows high views, its low Social Rate suggests it may be primarily a passive consumption format. Invest in creating more Reels with explicit engagement prompts designed to activate Social and Self rewards (e.g., Q&A, polls, mini-tutorials) and ensure full Reels performance metrics are captured for granular analysis of watch time and completion.</li>
+        <li><strong>Embrace the Authoritative, Empathetic Voice:</strong> The existing tone successfully positions Foundr as a trusted guide. Maintain this consistent voice, which reassures founders while also pushing them towards action. This builds a strong in-group identity (SIT) and fosters an environment where observed behaviors and advice are more readily adopted (SLT).</li>
+    </ul>
+
+    <h2>Potential Areas for Improvement</h2>
+    <ul>
+        <li><strong>Implement Comprehensive Data Tracking for Full Framework Utilization:</strong> The primary gap in analysis stems from missing data for "saves", "shares", "reach", "profile_visits", "follows", "replies", and detailed Reels metrics. Without these, a complete understanding of Relatability Rate, Self Rate, and conversion pathways is impossible. Establishing robust tracking for these metrics is imperative to fully leverage the Behavioral Reward Framework and derive precise, data-driven content strategy. This will allow Foundr to quantify how much content is truly useful (saves), widely resonated with (shares/reach), and drives tangible business outcomes (profile visits/follows).</li>
+        <li><strong>Increase Deliberate Social Engagement Beyond Simple CTAs:</strong> While "Comment BUILD" works, explore new methods for social reward that encourage deeper discussion and peer-to-peer interaction. This could include asking open-ended questions that invite personal stories or shared struggles, facilitating user-generated content, or responding to comments in a way that amplifies user contributions and models appreciative feedback. This builds stronger community bonds and increases the perceived value of individual participation within the in-group.</li>
+    </ul>
+
+    <div class="framework-section">
+        <h2>Behavioral Framework:</h2>
+        <h3>Social Behavioural Framework</h3>
+        <p>Federico Motta, 2025</p>
+        <p><strong>Executive Summary</strong><br>
+        Digital engagement is often interpreted through shallow metrics: reach, impressions, likes. But what underlies those numbers is psychological. This framework proposes that meaningful digital engagement emerges from the satisfaction of three core psychological rewards:</p>
+        <p><strong>A. Relatability:</strong> the need to feel emotionally recognized<br>
+        <strong>B. Self :</strong> the need to feel empowered and capable of growth<br>
+        <strong>C. Social:</strong> the need to feel visible, appreciated, and connected</p>
+        <p>These rewards are rooted in two foundational psychological theories: Social Identity Theory and Social Learning Theory. Understanding these theories helps us move beyond performance metrics and into the realm of identity, observation, and motivation. We propose that every piece of digital content or experience should deliver at least one of these three rewards. We also define clear behavioral metrics that allow teams to measure how well each reward is activated in user behavior.</p>
+
+        <h3>Theoretical Foundations</h3>
+        <h4>Social Identity Theory (Tajfel & Turner, 1979)</h4>
+        <p>Social Identity Theory (SIT) emerged in response to minimal group experiments that showed how even arbitrary group distinctions could produce in-group favoritism. The theory fundamentally restructured how psychology understands self-concept as one deeply embedded in group affiliation. It posits that a person’s sense of self is composed of personal identity (traits, values, and experiences that distinguish the individual) and social identity (the part of one’s self-concept derived from perceived membership in social groups). SIT is underpinned by three interrelated cognitive processes: (1) Categorization: People simplify their social environment by categorizing themselves and others into groups. This reduces complexity but introduces stereotyping. Importantly, categorization lays the groundwork for bias and preference. (2) Identification: Once a group identity is adopted, individuals conform to its norms, behaviors, and symbols. Their self-worth becomes bound to the group’s status and coherence. This leads to internalization of group values, shaping not only what one believes, but what one perceives as true or good. (3) Comparison: People elevate their own in-group by comparing it favorably to out-groups. This produces in-group favoritism, which is tied to self-esteem. If the group is praised or performs well, the individual feels affirmed. If the group is criticized, the individual’s self-image can suffer. Research following Tajfel’s initial studies confirmed that even trivial group assignments trigger this bias as individuals strive for a positive social identity (Tajfel & Turner, 1979). In other words, belonging to a group becomes a source of motivation: people favor their in-group and its symbols because doing so reinforces their self-worth. SIT also suggests that individuals are motivated to achieve and maintain a positive self-image through their group memberships, a premise supported by extensive evidence linking group affiliation to self-esteem and well-being (Abrams & Hogg, 1988). Subsequent developments, like Self-Categorization Theory, further showed how people not only identify with groups but also take on group-based norms and look to prototypical group members for guidance (Turner et al., 1987).</p>
+
+        <h4>Social Learning Theory (Bandura, 1977)</h4>
+        <p>Bandura’s Social Learning Theory (SLT) transformed behaviorism by showing that learning doesn’t require direct experience. Instead, humans learn efficiently by observing others through a process called vicarious learning. This concept expanded the domain of reinforcement by inferring that outcomes experienced by others can alter a person’s future behavior. Bandura famously demonstrated through the Bobo doll experiments that children could imitate aggressive behavior just by watching a model, even without any direct reward, illustrating observational learning in action (Bandura, 1977). SLT identifies four critical components in this learning process: (1) Attention: Not all models are equally influential. For a person to learn, the behavior must capture attention. Salience is driven by novelty, emotional weight, similarity to self, or social status of the model. (2) Retention: Observed behaviors must be stored as mental representations (e.g., schemas or scripts) that can later be retrieved and applied in new contexts. Without this step, observation remains fleeting and does not change future behavior. (3) Reproduction: The observer must believe they can reproduce the observed behavior. This is where self-efficacy (one’s belief in their capacity to execute the behavior) plays a central role. If the model seems too different or the behavior too complex, the observer will disengage. (4) Motivation: Finally, the learner must have a reason to imitate the behavior. They need to perceive that enacting the behavior will lead to a desirable outcome. Motivation can come from direct reinforcement (receiving a reward for the behavior), vicarious reinforcement (seeing someone else be rewarded for it), or intrinsic satisfaction (internal gratification for doing the behavior). Importantly, SLT repositions humans not as passive recipients of environmental stimuli, but as symbolic processors: we observe, infer, evaluate, and selectively imitate behavior. An observer is more likely to model a behavior if the model is someone they identify with or if the behavior is seen yielding positive outcomes (Bandura, 1986). This underscores the concept of vicarious reinforcement: seeing another person rewarded for an action increases the learner’s motivation to adopt that action themselves (Bandura, 1977). SLT also emphasizes that people don’t mimic blindly, they think about what they see and the consequences that follow. In essence, we become what we see rewarded, especially when the model reflects our identity and the reward is meaningful.</p>
+
+        <h3>Translating Social Psychology into Online Interaction</h3>
+        <p>While SIT and SLT were originally formulated in offline environments, their psychological mechanisms apply with equal, if not greater, force in digital settings. Digital platforms simply magnify what these theories describe: the drive to belong, and the tendency to imitate what we observe. Two specific transitions are especially relevant to understanding online engagement through the Social Behavioural Framework:</p>
+        <p><strong>1. Identity Recognition in Digital Environments</strong><br>
+        Social Identity Theory helps explain why users gravitate toward certain content or communities online. What they choose often reflects their desire to affirm their place in a perceived social group. Digital environments allow for rapid identity signaling through preferences, language, aesthetics, or affiliations. The process of social categorization happens algorithmically (e.g., content clusters, affinity groups), but the emotional effect remains human: users seek to see themselves reflected in what they consume. When this happens they experience identity affirmation.</p>
+        <p><strong>2. Observational Learning at Scale</strong><br>
+        Social Learning Theory plays out in two key ways in digital ecosystems. First of all, users constantly observe others demonstrating knowledge, insight, or personal improvement. When these models are perceived as credible or similar to us, users extract actionable lessons. Secondly, users observe which types of expressions get praised, which identities are supported, which behaviors earn replies or likes. This shapes what users consider “acceptable,” “admirable,” or “valued” in that social space. In both cases, digital platforms serve as dense learning environments where users continuously update their behavior not just based on what content says, but on how others react to it.</p>
+
+        <h3>The Social Behavioural Rewards</h3>
+        <h4>Reward I - Relatability</h4>
+        <p>“That’s me. And that means I belong.”<br>
+        Relatability Reward is the foundational emotional mechanism in the framework. It arises when a user encounters something that mirrors their internal experience: a thought they’ve had, a feeling they haven’t named, a behavior they assumed was private. That moment of mirroring fulfills a deep psychological function such as identity affirmation through recognition. Drawing from SIT, this form of engagement satisfies the need to maintain a coherent and positively regarded self-image within a social group. When people see content that reflects their own emotional or cognitive states, they implicitly experience in-group affirmation, confirming that their internal world is legitimate, shared, and socially situated. This is especially powerful when the group being affirmed is not officially named (e.g., “people who can’t sleep from overthinking”) but emotionally implied. In SIT terms, even an informal collective of “people who get it” can serve as an in-group that validates one’s identity. From an SLT perspective, relatability functions as emotional modeling. When a user sees someone express what they’ve felt but haven’t articulated, it sets a precedent: “You’re allowed to feel this way. Others feel this too.” This vicarious validation reduces internal dissonance and increases expressive permission. Seeing others reveal a similar experience effectively models that it’s socially acceptable to have that experience (Bandura, 1977). For the individual, seeing their private feelings reflected in a public space offers reassurance that their experiences are normal, thereby reducing feelings of isolation. Empirical research indicates that knowing a friend or peer is going through the same emotional situation can make people feel better than handling it alone (Wagner et al., 2015). In one study, simply believing that a friend was simultaneously sharing the same emotional experience led participants to report less negativity and even activated neural reward circuits associated with social connection (Wagner et al., 2015). In line with the fundamental need to belong (Baumeister & Leary, 1995), content that validates a user’s inner experiences provides a sense of social connection and acceptance. It tacitly tells the user, “your feelings make sense in a social context,” which powerfully affirms that they are not alone. In practice, this reward is often pre-cognitive as users don’t always realize they’ve “seen themselves” in content, but their behavior reflects it.</p>
+        <p><strong>Behavioral Signature</strong><br>
+        The behavioral correlates of Relatability are clear. Likes indicate private resonance. A low-friction signal that the user emotionally or cognitively relates. It’s a quiet form of identity affirmation: “This is me.” Shares, however, carry a higher social intention. They often function not simply to say “this is me”, but to say “this is us.” Users share content not only to self-signal but to strengthen group coherence, especially when it reflects a relationship, mutual quirk, or shared frustration. In other words, the content becomes more meaningful when someone else understands it with you.</p>
+        <p><strong>How to calculate Relatability</strong><br>
+        𝑅𝑒𝑙𝑎𝑡𝑎𝑏𝑖𝑙𝑖𝑡𝑦 𝑅𝑎𝑡𝑒 = (𝐿𝑖𝑘𝑒𝑠 + 𝑆ℎ𝑎𝑟𝑒𝑠) / (𝑅𝑒𝑎𝑐ℎ × 100)<br>
+        This metric captures the breadth of recognition: among all who saw this content, how many felt mirrored enough to quietly affirm it or share it as part of their identity?</p>
+        <p><strong>Relatability in Topics and Formats</strong><br>
+        Every piece of content is composed of two fundamental layers: topic and format. While the emotional resonance of relatability emerges from recognition, what is being recognized (the topic) and how it is expressed (the format) are distinct yet interrelated mechanisms. Both can be deeply relatable, but for different psychological reasons. Topics reflect recurring emotional, cognitive, or social patterns. In classical rhetoric they’re referred to as topoi (τόπος), from the Greek for "places." These are thematic anchors that remain relevant across time because they mirror fundamental aspects of human life: heartbreak, social anxiety, imposter syndrome. These topoi endure because they tap into universal identity experiences, or, in our terms, relatable experiences. Formats, on the other hand, reflect structure, tone, length, visual layout, rhythm, linguistic style, or medium. A lo-fi meme, a movie, a 40 pages essay, or a play, each is a format. Formats are culturally constructed and temporally sensitive. What feels emotionally resonant on Instagram may not feel appropriate in a theater because the format violates the local group code, although the topic, and the relatable feeling associated with it, might be exactly the same. Think of a meme that says: “POV you just got rejected by your crush for the 10th time”. It expresses a highly relatable, timeless, intimate yet universal topic, which can be explored across the centuries, from Ovid’s Metamorphoses through Dante’s Comedy. From a SIT perspective, we can see formats as a form of group signaling. A user recognizes themselves in how it's said because that mirrors the communicative habits of a group they identify with. Formats often carry a semiotic charge: they communicate who this is for and who belongs in the interpretive community. From SLT, observing the format teaches the appropriate way to express similar ideas within their in-group. They learn what type of voice is rewarded, what kind of syntax is admired, and what structural choices get responses. Thus, while topics provide thematic continuity, formats demand cultural adaptability. To maintain high relatability over time, we must preserve the timeless topoi while continuously researching and adopting the most current expressive formats that resonate with specific platform-based or identity-based groups. Without this dual awareness, content risks one of two failures: being emotionally shallow (when it relies on trendy formats but lacks depth) or structurally outdated (when it clings to meaningful topics but ignores evolving expressive norms).</p>
+        <p><strong>Example</strong><br>
+        "It's 2 a.m. and I just remembered something embarrassing I did 5 years ago."<br>
+        Why it works: According to SIT, when users see this, it affirms they are not alone in their mental patterns; it normalizes and de-stigmatizes their internal dialogue. Emotionally, it provides a sense of relief: “I’m not weird for thinking this.” Because it’s phrased humorously, it also gives social permission to laugh at oneself, softening the edge of self-criticism. It turns a private discomfort into a socially shared joke, creating unspoken belonging.</p>
+
+        <h4>Reward II - Self</h4>
+        <p>“This helps me. I’m growing.”<br>
+        Self Reward is the satisfaction a user feels when they perceive that something they’ve encountered offers personal utility, whether that’s insight, knowledge, perspective, or a tool for coping. Unlike Relatability, which mirrors who the user is, Self Reward points toward who they could become. It activates the aspirational dimension of engagement: the sense that “this content brings me closer to a version of myself I want to reach.” Self Reward is fundamentally about personal growth and empowerment. What differentiates Self Reward from generic “valuable content” is its dependency on modeling: the user must see someone embody the value or behavior in a way that feels believable and adoptable. In SLT terms, observed behavior becomes a catalyst for change only if the model appears to be rewarded for it and the user perceives the behavior as replicable in their own life. If either of those conditions fails (e.g.., the model isn’t actually benefiting, or the behavior seems out of reach) the user’s motivation to imitate will drop (Bandura, 1986). This emphasis on observable reward echoes Bandura’s finding that people are most likely to imitate behaviors that they have seen lead to positive outcomes for others (Bandura, 1977). It also highlights the importance of efficacy: users need to feel “I can do this too.” According to Bandura’s self-efficacy theory, one of the best ways to increase someone’s confidence in doing something is for them to witness a similar other succeeding at it (Bandura, 1997). Thus, effective Self Reward content often showcases a relatable person successfully performing or benefiting from the behavior, providing both inspiration and a sense of attainability. However, not all models function the same way psychologically. According to Self-Categorization Theory (Turner, 1987), people within social groups are most influenced by two types of models: (1) Peers: individuals who reflect the user’s current identity (i.e., relatable people) and (2) Prototypes: in-group leaders or ideal examples. These are figures who are perceived as exemplary representatives of the group’s values or traits. In a digital context, prototypes might be creators, influencers, or community leaders who embody success within a shared identity framework. They may be slightly aspirational, but they remain credible because they represent who the group wants to be, not someone outside of it. These prototypical figures set the standard for what is possible and desirable for group members (Turner et al., 1987). Bandura’s social learning and Turner’s identity theories converge here: users are most influenced when they observe a rewarded identity they can plausibly see themselves growing into.</p>
+        <p><strong>Behavioral Signature</strong><br>
+        The signature behavior of Self Reward is the Save. This action implies future applicability, mental rehearsal of behavior adoption, and a belief that this knowledge may be instrumental to personal growth.</p>
+        <p><strong>How to calculate Self</strong><br>
+        To understand when Self Reward is truly activated, we benchmark saves against likes, because relatability must precede utility. If a user doesn’t first see themselves in the content (Relatability), they won’t perceive it as useful (Self).<br>
+        𝑆𝑒𝑙𝑓 𝑅𝑎𝑡𝑒 = (𝑆𝑎𝑣𝑒𝑠 / 𝐿𝑖𝑘𝑒𝑠) × 100<br>
+        This metric identifies how many users moved from emotional recognition to perceived future value. A high Self Rate suggests that content successfully passed the threshold of "this reflects me" into "this can help me." It captures internalized aspiration. The user's sense that they are closer to becoming someone more capable, equipped, or wise.</p>
+        <p><strong>Actionable Self</strong><br>
+        SLT tells us that transformation comes from replication. Users are most likely to adopt new behaviors when they see models demonstrating actions that are both believable and replicable. This means content aiming for Self Reward must instruct. The presence of clear, structured, and simple tips allows users to imagine themselves doing the behavior. In contrast, vague encouragement (“be more mindful,” “stay positive”) fails to activate self-efficacy because it lacks observable steps. When content provides actionable guidance (e.g., realistic routines, step-by-step examples, or socially modeled habits) it bridges the gap between insight and adoption. To unlock Self Reward at scale, content must reduce ambiguity and present users with behaviors they can visualize, rehearse, and implement. In practical terms, Self Reward content often answers the question: “I understand the idea, now how do I do it?” By giving that answer in a concrete way, the content puts the users in a position to take the next step.</p>
+        <p><strong>Example</strong><br>
+        “You Always Felt Overwhelmed Because You Never Tried These 3 Boundary Shifts”<br>
+        Why it works: The first half of the title reframes a relatable negative emotional state (overwhelm) as the result of missing knowledge. This is empowering because it creates the possibility that things can change, they just lacked a key behavioral tool. According to Social Learning Theory, transformation happens when users see models demonstrating believable and replicable behaviors. If this post contains simple, well-structured tips like: a script to say “no” to a last-minute meeting, a 2-minute reflective exercise for energy mapping, a phone setting to reduce input overload… then it becomes savable. And that is the key to Self activation. The content avoids generic advice like “prioritize yourself”, which is emotionally valid, but not actionable. Instead, it offers practical tools that users can imagine themselves implementing. The tone is compassionate but directive: “You’ve always felt this way because you didn’t have these tools. Now you do.”</p>
+
+        <h4>Reward III - Social</h4>
+        <p>“I’m seen. I matter here.”<br>
+        Social Reward refers to the sense of being acknowledged, appreciated, or validated by others. Unlike Relatability (which is inward-facing) or Self Reward (which is aspirational), Social Reward is fundamentally interpersonal: it satisfies the human need to contribute, be heard, and receive feedback that confirms one’s social presence and relevance. This reward fulfills the relational dimension of identity. Individuals don’t just want to observe or learn; they want to know that their participation makes a difference. Humans have a fundamental need for social acceptance and esteem (Baumeister & Leary, 1995), and Social Reward taps directly into this. Even small nods of acknowledgment serve as powerful psychological rewards because they signal inclusion. According to Leary’s sociometer hypothesis, self-esteem itself can be viewed as an internal gauge of social acceptance; when others approve of or value us, our self-esteem rises (Leary et al., 1995). According to SIT, this kind of recognition plays a key role in self-worth. People derive part of their self-esteem from the status and value they hold within their groups. When users participate in a community and are acknowledged by others, especially by high-status members, they feel an increase in in-group value. In SIT terms, their social identity is being affirmed: the group is effectively saying “you are a valuable member.” Importantly, this validation doesn’t have to be explicit. Even small signals, like a “like” on a comment or an upvote, serve as social markers of inclusion and respect. Over time, these cues accumulate into a sense of reputation or standing within the community. The psychological impact of who validates you also matters. Users are influenced not just by how many people respond, but by who those people are (See the Peers vs. Prototype topic in the chapter before). In community dynamics, a “like” or comment from a respected figure (say, the content creator or a community moderator) can carry disproportionate weight in validating a user’s contribution. It’s essentially an anointing of that user as someone worth noticing, which boosts the recipient’s social standing and, by extension, their self-esteem within the group. From the perspective of SLT, users don’t just observe what content gets rewarded; they observe which forms of participation or contribution (comments, questions, jokes, disclosures) receive social appreciation. This process teaches them how to participate in socially rewarding ways. A user might see that someone who posts a thoughtful comment gets several appreciative replies, and unconsciously learn: “This is how I can be valued too.” Bandura (2001) noted that media environments create rich opportunities for vicarious learning of social norms: people learn appropriate behaviors by witnessing the social feedback others receive. In online communities, this means users are constantly learning the unspoken rules: they calibrate their behavior based on social feedback patterns, developing tacit understandings of what expressions are most likely to be recognized or rewarded. These rules (e.g., “witty comments get likes” or “thoughtful questions get answers”) are informally taught through visibility and imitation. In time, the community’s culture is reinforced as members imitate the behaviors that they have seen earn appreciation. In this way, Social Reward not only gratifies individual users, but also serves as a mechanism of social learning that shapes community norms (Bandura, 2001).</p>
+        <p><strong>Behavioral Signature</strong><br>
+        Social Reward is captured through two primary behaviors: Comments, which indicate a shift from internal agreement to public contribution. They signal that a user felt confident enough to speak and invested enough to engage. And Comment likes, which reflect that the user’s contribution was socially appreciated by others, validating both the act and the actor. These are higher-effort behaviors than likes or saves. They involve risk and intent (speaking up, offering an opinion, entering the social arena). Their presence signals that the user feels safe and seen enough to participate.</p>
+        <p><strong>How to calculate Social</strong><br>
+        Again, these behaviors usually emerge only after relatability is established. A user won’t comment on content that doesn’t resonate. This is why we frame Social Reward as built on top of Relatability, and why its metric uses likes as the behavioral baseline.<br>
+        𝐶𝑜𝑚𝑚𝑒𝑛𝑡𝑠 / (𝑆𝑜𝑐𝑖𝑎𝑙 𝑅𝑎𝑡𝑒 = 𝐿𝑖𝑘𝑒𝑠) × 100<br>
+        This metric reflects how many users moved from passive emotional agreement to active, acknowledged participation. A high Social Rate means that the content and the space in which it exists made users feel that their voice was welcome, valued, and rewarded. It is a marker of inclusion</p>
+        <p><strong>Examples</strong><br>
+        1 -“@user123, this made me think! Thank you. What do you guys think?”<br>
+        Why it works: This phrase exemplifies Social Reward by combining vertical validation, peer amplification, and group inclusion into a single interaction. The first part: “@user123, this made me think! thank you” is a powerful gesture of recognition. According to Self-Categorization Theory, when a prototype or high-status figure (like the creator) publicly acknowledges a follower, it boosts the follower’s perceived value within the group. This shifts the user from passive observer to recognized contributor. That feeling of impact is core to social self-esteem. The second part “What do you guys think?” opens the space horizontally. It invites the entire community into the dialogue, implicitly elevating the original commenter by turning their thought into a shared discussion prompt. Other users now observe that insightful contributions get publicly highlighted and extended into conversation. The emotional outcome is twofold: For @user123: validation, pride, and increased willingness to engage. For observers: motivation to contribute in thoughtful ways, now that they’ve seen what social appreciation looks like in action.<br>
+        2- “Hey guys can you comment with a piece of advice you’d give your younger self? We want to make a list.”<br>
+        Why it works: The phrase “we want to make a list” gives the comment a sense of contribution to something collective. Users feel their voice matters when their experience is framed as valuable to the group. Reflecting on past struggles and growth also reinforces their identity as someone who’s learned and now belongs. From a Social Learning Theory lens, seeing others share thoughtful responses, and being acknowledged, teaches users that this kind of vulnerability is socially rewarded. </p>
+
+        <h3>Conclusion</h3>
+        <p>The framework outlined here reveals that meaningful digital engagement is driven by human motivations: the desire to be recognized, to learn, and to connect socially. By aligning content strategy with the three core rewards (Relatability, Self, and Social), teams can design digital experiences that resonate on a deeper psychological level at each meaningful touchpoint they share with users. In essence, content that makes users feel understood, empowered, or connected will inspire more genuine and sustained interaction. By grounding our success metrics in observable user behavior tied to these rewards, we move from vanity metrics to motivational insights. Likes, saves, and comments are not just arbitrary numbers – they are signals of psychological fulfillment. When interpreted through the lens of Social Identity Theory and Social Learning Theory, these behaviors become a map of how people see themselves, what they aspire to, and how they learn to engage with others. In short, our analytics start to reflect human drives rather than just clicks. As digital ecosystems continue to evolve, this framework also serves as an ethical compass. It reminds us that every click, share, or reply is identity in motion. By focusing on rewarding users with belonging, growth, and recognition – rather than just grabbing attention – we create more meaningful interactions. In doing so, we acknowledge the person behind the metric. Ultimately, content that honors these social-behavioral rewards can cultivate not only higher engagement, but healthier communities where users feel seen, capable, and connected.</p>
+
+        <h3>References</h3>
+        <ul>
+            <li>Bandura, A. (1977). Social learning theory. Englewood Cliffs, NJ: Prentice Hall.</li>
+            <li>Bandura, A. (1986). Social foundations of thought and action: A social cognitive theory. Englewood Cliffs, NJ: Prentice Hall.</li>
+            <li>Bandura, A. (1997). Self-efficacy: The exercise of control. New York, NY: W. H. Freeman.</li>
+            <li>Bandura, A. (2001). Social cognitive theory of mass communication. Media Psychology, 3(3), 265–299.</li>
+            <li>Baumeister, R. F., & Leary, M. R. (1995). The need to belong: Desire for interpersonal attachments as a fundamental human motivation. Psychological Bulletin, 117(3), 497–529.</li>
+            <li>Leary, M. R., Tambor, E. S., Terdal, S. K., & Downs, D. L. (1995). Self-esteem as an interpersonal monitor: The sociometer hypothesis. Journal of Personality and Social Psychology, 68(3), 518–530.</li>
+            <li>Tajfel, H., & Turner, J. C. (1979). An integrative theory of intergroup conflict. In W. G. Austin & S. Worchel (Eds.), The social psychology of intergroup relations (pp. 33–47). Monterey, CA: Brooks/Cole.</li>
+            <li>Turner, J. C., Hogg, M. A., Oakes, P. J., Reicher, S. D., & Wetherell, M. S. (1987). Rediscovering the social group: A self-categorization theory. Oxford, UK: Basil Blackwell.</li>
+            <li>Valkenburg, P. M., Peter, J., & Schouten, A. P. (2006). Friend networking sites and their relationship to adolescents’ well-being and social self-esteem. CyberPsychology & Behavior, 9(5), 584–590.</li>
+            <li>Wagner, U., Galli, L., Schott, B. H., Wold, A., & Walter, H. (2015). Beautiful friendship: Social sharing of emotions improves subjective feelings and activates the neural reward circuitry. Social Cognitive and Affective Neuroscience, 10(6), 882–890.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
+```

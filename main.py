@@ -8,6 +8,37 @@ from business_discovery import get_insights_for_profile_business_discovery
 from get_references import get_references
 from get_outliers import get_outliers
 import traceback
+import os
+import json
+from google import genai
+from generate_report import generate_in_depth_report
+
+
+def ensure_account():
+    """
+    Ensure we have a USER token and an IG account selected.
+    If ACCESS_TOKEN is missing, instruct the user to obtain it.
+    If ACCESS_TOKEN exists but IG_ID is missing, prompt selection automatically.
+    Returns True if both ACCESS_TOKEN and IG_ID are available, False otherwise.
+    """
+    if not config.ACCESS_TOKEN:
+        token = oauth_flow()
+        if token:
+                config.ACCESS_TOKEN = token
+                print("Stored USER token (in config).")
+
+
+    if not config.IG_ID:
+        selected = select_instagram_account(config.ACCESS_TOKEN)
+        if selected:
+            config.IG_ID = selected
+            print(f"Selected IG ID set to {config.IG_ID}")
+            return True
+        else:
+            print("No IG account selected.")
+            return False
+
+    return True
 
 
 def main_menu():
@@ -22,9 +53,10 @@ def main_menu():
         print("6. Download media from any Instagram profile")
         print("7. Get references")
         print("8. Analyse profile outliers")
+        print("9. Generate in-depth profile report")  # Add this line
         print("0. Exit")
 
-        choice = input("Enter 0,1,2,3,4,5,6: ").strip()
+        choice = input("Enter 0,1,2,3,4,5,6,7,8,9: ").strip()  # Update input prompt
 
         if choice == "1":
             token = oauth_flow()
@@ -42,8 +74,9 @@ def main_menu():
                     print(f"Selected IG ID set to {config.IG_ID}")
 
         elif choice == "3":
-            if not config.ACCESS_TOKEN or not config.IG_ID:
-                print("You need to get a token and select an account first.")
+            if not ensure_account():
+                # ensure_account already printed guidance or attempted selection
+                pass
             else:
                 try:
                     n = int(input("How many recent posts do you want insights for? "))
@@ -66,8 +99,8 @@ def main_menu():
                     print(f"Invalid input: {e}")
 
         elif choice == "4":
-            if not config.ACCESS_TOKEN or not config.IG_ID:
-                print("You need to get a token and select an account first.")
+            if not ensure_account():
+                pass
             else:
                 try:
                     n = int(input("How many recent media do you want to download? "))
@@ -76,8 +109,8 @@ def main_menu():
                     print(f"Invalid input: {e}")
 
         elif choice == "5":
-            if not config.ACCESS_TOKEN or not config.IG_ID:
-                print("You need to get a token and select an account first.")
+            if not ensure_account():
+                pass
             else:
                 try:
                     url = input("Enter Instagram profile URL: ").strip()
@@ -97,8 +130,8 @@ def main_menu():
                     print(f"Invalid input: {e}")
 
         elif choice == "6":
-            if not config.ACCESS_TOKEN or not config.IG_ID:
-                print("You need to get a token and select an account first.")
+            if not ensure_account():
+                pass
             else:
                 try:
                     url = input("Enter Instagram profile URL: ").strip()
@@ -107,8 +140,8 @@ def main_menu():
                 except Exception as e:
                     print(f"Invalid input: {e}")
         elif choice == "7":
-            if not config.ACCESS_TOKEN or not config.IG_ID:
-                print("You need to get a token and select an account first.")
+            if not ensure_account():
+                pass
             else:
                 try:
                     username = str(input("username to get references for: "))
@@ -116,8 +149,8 @@ def main_menu():
                 except Exception as e:
                     print(f"Invalid input: {e}")
         elif choice == "8":
-            if not config.ACCESS_TOKEN or not config.IG_ID:
-                print("You need to get a token and select an account first.")
+            if not ensure_account():
+                pass
             else:
                 try:
                     username = str(input("username to get references for: "))
@@ -127,6 +160,40 @@ def main_menu():
                 except Exception as e:
                         tb = traceback.extract_tb(e.__traceback__)[-1]  # last traceback frame
                         print(f"❌ Invalid input on line {tb.lineno}: {e}")
+
+        elif choice == "9":
+            try:
+                username = str(input("Enter Instagram username for in-depth analysis: ")).strip()
+                outlier_user_dir = os.path.join("outlier_media", username)
+
+                # If the outlier folder does NOT exist, run option 8 first to generate outlier data
+                if not os.path.exists(outlier_user_dir):
+                    print(f"No existing outlier data for '{username}' found in '{outlier_user_dir}'. Running option 8 first to generate it.")
+                    if not ensure_account():
+                        pass
+                    else:
+                        try:
+                            multiplier = float(input("multiplier from average likes: "))
+                            n_media = int(input("number of media to analyse:  "))
+                            get_outliers(config.ACCESS_TOKEN, config.IG_ID, username, n_media, multiplier)
+                        except Exception as e:
+                            tb = traceback.extract_tb(e.__traceback__)[-1]
+                            print(f"❌ Error while running option 8 on line {tb.lineno}: {e}")
+                            # Continue to attempt report generation even if outlier generation failed
+
+                # After optionally running option 8 (or if folder already existed), proceed to generate the in-depth report
+                if not ensure_account():
+                    pass
+                else:
+                    try:
+                        generate_in_depth_report(config.ACCESS_TOKEN, config.IG_ID, username)
+                        print(f"In-depth report generated for {username}.")
+                    except Exception as e:
+                        tb = traceback.extract_tb(e.__traceback__)[-1]
+                        print(f"❌ Error generating report on line {tb.lineno}: {e}")
+            except Exception as e:
+                tb = traceback.extract_tb(e.__traceback__)[-1]
+                print(f"❌ Error on line {tb.lineno}: {e}")
 
         elif choice == "0":
             print("Bye!")
